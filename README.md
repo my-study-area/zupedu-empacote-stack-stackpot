@@ -18,3 +18,16 @@
 - E o que é de fato uma stack?
   - [O que é uma stack?](https://www.youtube.com/watch?v=AmikJ8Zx9d8&ab_channel=4Zuppers)
 
+### Atividades Preparatórias
+#### Acompanhe a análise das oportunidades de alguém que já domina a StackSpot
+
+Nessa atividade você vai acompanhar o análise feita em cima de uma aplicação web voltada para educação. Ela é uma aplicação escrita em Java e que utiliza o ecossistema do Spring para dar mais velocidade para a implementação das funcionalidaes.
+
+Não fique preocupado(a) com a stack de tecnologias em si, acompanhe a linha de raciocínio e fique bem atento(a) a tudo que for demonstrado durante o vídeo.
+
+Um detalhe importante, uma vez que você decidiu realizar esta atividade, recomendamos fortemente que você também preencha a avaliação que foi preparada para testar o seu nível de entendimento sobre o que foi explorado.
+
+[Assista agora ao passo ao passo da análise](https://youtu.be/FsSaLtwx_0k)
+
+[Assista agora ao passo ao passo mostrando que pode ser template, plugin e stackfile.](https://youtu.be/FuKpv4ivsAM)
+
