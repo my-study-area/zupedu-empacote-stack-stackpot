@@ -1,4 +1,5 @@
 # zupedu-empacote-stack-stackpot
+
 ## Analisando o cenário para encontrar oportunidades de uso da stackspot
 
 ### Teorias Necessárias
@@ -30,4 +31,45 @@ Um detalhe importante, uma vez que você decidiu realizar esta atividade, recome
 [Assista agora ao passo ao passo da análise](https://youtu.be/FsSaLtwx_0k)
 
 [Assista agora ao passo ao passo mostrando que pode ser template, plugin e stackfile.](https://youtu.be/FuKpv4ivsAM)
+
+### Atividades Obrigatórias
+
+#### Analise o contexto de um projeto que simula um marketplace e descubra oportunidades de criação de templates, plugins e stackfiles.
+
+Leia a descrição do contexto e identifique o que pode virar template, plugins e stackfiles. Quando tiver clareza, responda a avaliação.
+
+- [https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-trabalho.md](https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-trabalho.md)
+
+Templates:
+- Spring Boot + Java para apis
+- Micronaut + Java para apis
+- ASP.NET Core + C#
+- NextJS para construção de frontends com React
+- NestJS para construção de BFFs
+
+Plugins:
+- Projeto precisa falar com um postgresql
+- Projeto precisa mandar mensagem para nosso kafka.
+- Projeto precisa receber mensagem de uma ou mais filas do kafka
+- Projeto precisa mandar e consumir informação do cache. No caso utilizamos o redis.
+- Projeto precisa seguir a arquitetura de software sugerida pela Clean Architecture
+- Projeto precisa habilitar autenticar e autorização usando o que é recomendado internamente.
+- De vez em quando tem projeto que precisa falar com o SNS da AWS.
+
+Stackfile:
+- Default com Spring Boot + Java
+- Default + Postgres
+- Default + kafka
+- Default + Postgres + Kafka + clean Architecture
+
+#### Analise o contexto de uma documentação relativa a um determinado projeto e descubra as oportunidades de criação de templates, plugins e stackfiles.
+
+Leia a descrição do contexto e identifique o que pode virar template, plugins e stackfiles. Quando tiver clareza, responda a avaliação.
+- [https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-documentacoes.md](https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-documentacoes.md)
+
+
+## Links
+- [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
+- [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
+- [Plugin](https://docs.stackspot.com/docs/getting-started/glossary/#plugin)
 
