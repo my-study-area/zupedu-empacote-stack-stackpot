@@ -116,6 +116,14 @@ Poucos templates vão nascer sem a necessidade de nenhum parâmetro. Nesta expli
  stk create app teste-aplicacao2 -p /home/stk/workspace/stack-exemplo-explicacao/template-exemplo
  ```
 
+6 - Computando inputs para facilitar a utilização de variáveis e evitar duplicação de lógica
+
+Vão existir situações onde mais de um arquivo precisa da utilização de uma combinação de variáveis de input definidas no template. Sem o devido cuidado isso pode virar duplicação de código dentro do template dificultando sua futura manutenção. Acompanhe uma explicação sobre como isso pode ser resolvido através dos computed_inputs
+- [Utilizando computed inputs para evitar duplicação de lógica dentro dos itens do template](https://www.youtube.com/watch?v=pm9_N1t6guM&ab_channel=4Zuppers)
+```bash
+stk create app teste-aplicacao -p /home/stk/workspace/stack-exemplo-explicacao/template-exemplo
+```
+
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)

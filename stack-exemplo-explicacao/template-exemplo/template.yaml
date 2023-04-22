@@ -13,3 +13,5 @@ inputs:
   - label: Estrutura de pasta
     type: text
     name: estrutura_pastas
+computed-inputs:
+  combinacao_projeto_descricao: "{{inputs.project_name}}.{{inputs.descricao}}"
