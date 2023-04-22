@@ -108,6 +108,13 @@ stk create template template-exemplo
 stk create app test-app -p /home/stk/workspace/stack-exemplo-explicacao/template-exemplo
 ```
 
+5 - Criando templates que precisam ser parametrizados
+
+Poucos templates vão nascer sem a necessidade de nenhum parâmetro. Nesta explicação é demonstrado como definir tais parâmetros e também como utilizar cada um para atender a necessidade do template.
+ - [Criando templates que precisam de informações extras do usuário(a)](https://www.youtube.com/watch?v=EO4jCWhaVLA&ab_channel=4Zuppers)
+ ```bash
+ stk create app teste-aplicacao2 -p /home/stk/workspace/stack-exemplo-explicacao/template-exemplo
+ ```
 
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)

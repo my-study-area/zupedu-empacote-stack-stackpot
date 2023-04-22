@@ -1,0 +1,1 @@
+# About stack-exemplo-explicacao stack

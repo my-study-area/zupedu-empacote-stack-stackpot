@@ -1,0 +1,15 @@
+name: template-exemplo
+description: template-exemplo
+types:
+  - app-template
+inputs:
+  - label: Project name
+    type: text
+    name: project_name
+    default: project-name
+  - label: Descricao do projeto
+    type: text
+    name: descricao
+  - label: Estrutura de pasta
+    type: text
+    name: estrutura_pastas
