@@ -1,6 +1,11 @@
 # zupedu-empacote-stack-stackpot
 
 ## Analisando o cenário para encontrar oportunidades de uso da stackspot
+Analisando o cenário para encontrar oportunidades de uso da stackspot
+
+Este grupo de atividades tem como objetivo treinar o seu olhar analítico em cima de um contexto para encontrar oportunidades de uso da StackSpot que possama dar mais padrão e velocidade para o dia a dia de trabalho. Abaixo você encontra o resumo dos objetivos de aprendizagem da seção.
+
+Ser capaz de identificar a necessidade de criação de templates, plugins e stackfiles para um determinado contexto
 
 ### Teorias Necessárias
 - Visão geral da StackSpot
@@ -66,6 +71,42 @@ Stackfile:
 
 Leia a descrição do contexto e identifique o que pode virar template, plugins e stackfiles. Quando tiver clareza, responda a avaliação.
 - [https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-documentacoes.md](https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-documentacoes.md)
+
+## Identificando e construindo templates para facilitar começo de novos projetos
+Este grupo de atividades tem o objetivo de exercitar sua capacidade de construir templates utilizando a stackspot para criar estruturas básicas de partidas para novos projetos. Vai ser praticada principalmente a construção de templates parametrizados, que é o caso da vida real mais comum. Além disso, também vamos explorar a criação de templates que precisam executar comandos de setup na máquina em si. Abaixo você encontra o resumo dos objetivos de aprendizagem da seção.
+
+- Em função do olhar analítico sobre um contexto a pessoa tem que ser capaz de criar templates que facilitem o começo de novos projetos
+- Ser capaz de parametrizar o template atendendo as necessidades das tecnologias do contexto
+- Ser capaz de isolar eventuais tratamentos de inputs em computed inputs para reaproveitá-los dentro das pastas e arquivos do template.
+- Ser capaz de criar hooks que permitam a execução de comandos necessários para criação e setups necessários de templates.
+
+### Teorias Necessárias
+
+**1 - Instalação da stackspot**
+
+Para instalar o CLI(command line interface) da StackSpot e deixar seu ambiente preparado(a) para acompanhar as explicações e exercícios é sugerido que você até o site oficial e realize o download. O endereço de acesso é stackspot.com.
+
+[Você também pode acompanhar o passo a passo de download através do vídeo](https://youtu.be/vT9Tll20ZSU)
+
+2 - O que eu preciso saber do Jinja, engine de templates usada pelo CLI da StackSpot
+
+O Jinja é uma engine de templates escrita em Python e foi escolhida para ser a engine de materialização de templates dinâmicos dentro da CLI da StackSpot. É importante descobrir o nível que precisamos saber sobre essa tecnologia de modo a criarmos nossos templates.
+- [2.9 - Explicando o nível de entendimento necessário sobre o Jinja, a engine de template da CLI](https://www.youtube.com/watch?v=ltIE6Q2D3fQ&ab_channel=4Zuppers)
+
+3 - Uma leve navegada pelos comandos essenciais para criação de stacks com seus templates, plugins e stackfiles.
+- [Navegando pelos comandos da CLI da StackSpot voltados para criação de stacks de aplicações](https://www.youtube.com/watch?v=m9Muu5zRpg8&ab_channel=4Zuppers)
+
+Acompanhe uma explicação sobre os comandos básicos da CLI da StackSpot voltados para a criação de stacks de aplicações.
+
+4 - Como criar e adicionar numa stack o primeiro template
+Acompanhe uma explicação sobre como podemos criar templates e adicioná-los a uma stack.
+- [Explicação básica sobre como criar um template](https://www.youtube.com/watch?v=JpZhbET8dK4&ab_channel=4Zuppers)
+```bash
+stk create stack stack-exemplo-explicacao
+cd stack-exemplo-explicacao
+stk create template template-exemplo
+stk create app test-app -p /home/stk/workspace/stack-exemplo-explicacao/template-exemplo
+```
 
 
 ## Links
