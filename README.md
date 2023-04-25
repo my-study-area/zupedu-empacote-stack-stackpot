@@ -142,6 +142,23 @@ A vida não é feita só de acertos e vai ser mais do que normal cometer alguns 
 - [Passando por alguns erros comuns durante a utilização da CLI](https://www.youtube.com/watch?v=RrFZzF1GTcU&ab_channel=4Zuppers)
 
 
+```bash
+docker run -v $PWD:/root/workdir -it --entrypoint /bin/bash -w /root/workdir  stackspot/stk-cli-ubuntu
+
+docker run -v $PWD:/home/stk -it --entrypoint /bin/bash  stackspot/stk-cli-ubuntu
+
+apt update
+apt install curl
+apt install git
+apt install links
+
+# fonte: https://github.com/stack-spot/stk-cli-action/blob/main/action.yml
+curl -fsSL https://stk.stackspot.com/install.sh | bash
+mv /home/runner/.stk/bin/* /usr/local/bin
+stk -v
+stk login <EMAIL_ADDRESS>
+```
+
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
