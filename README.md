@@ -124,6 +124,24 @@ Vão existir situações onde mais de um arquivo precisa da utilização de uma 
 stk create app teste-aplicacao -p /home/stk/workspace/stack-exemplo-explicacao/template-exemplo
 ```
 
+7 - Criando templates que exigem instalação de artefatos na máquina como prereq
+
+Para algumas stacks de tecnologias é comum a instalação de artefatos na máquina. Isso acontece muito no mundo Javascript, por exemplo. Alguns projetos sugerem a instalação de binários globais, como o NextJS e o NestJS. A mesma coisa pode acontecer para outros ambientes.
+Para que você fique mais preparado(a) criamos uma explicação de como é possível resolver essa necessidade através de hooks.
+- [Possibilitando a execução de comandos de setup na máquina durante a materialização do template](https://www.youtube.com/watch?v=oUbEWhKC1Ek&ab_channel=4Zuppers)
+
+8 - Especificando comandos por sistema operacional para os hooks do tipo "run" do template.
+
+Aqui temos uma explicação rápida sobre como indicar comandos equivalentes para sistemas operacionais diferentes na hora de executar um hook do tipo "run".
+- [Explicação sobre como especificar a execução de comandos em função do Sistema Operacional](https://www.youtube.com/watch?v=iIvOB1KOeWE&ab_channel=4Zuppers)
+
+9 - Passando por alguns erros que podem acontecer no dia a dia e já ficando mais preparado(a).
+
+A vida não é feita só de acertos e vai ser mais do que normal cometer alguns errinhos durante a execução de comandos, definição de arquivos de templates e utilização de variáveis. Para te deixar um pouquinho mais preparado(a), foi criada uma explicação demonstrando um pouco dos problemas.
+
+- [Passando por alguns erros comuns durante a utilização da CLI](https://www.youtube.com/watch?v=RrFZzF1GTcU&ab_channel=4Zuppers)
+
+
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
