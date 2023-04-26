@@ -177,8 +177,47 @@ Em termos de funcionalidades da StackSpot, o passo a passo que vai ser demonstra
 Ao final deste vídeo você vai precisar responder uma avaliação para verificar se de fato absorveu o que era esperado para dar os próximos passos.
 - [Passo a passo criando um template com hook para facilitar a criação de projetos com NextJS](https://www.youtube.com/watch?v=LUvkn91lj50&ab_channel=4Zuppers)
 
+### Atividades Obrigatórias
+**Baseado no contexto de um projeto que simula um marketplace, identifique e crie templates que possam ajudar as equipes de engenharia daquele contexto**
+
+[Leia a descrição do contexto](https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-trabalho.md) e crie os templates que você entender que fazem sentido.
+
+Após exercitar e criar seus templates, você vai precisar responder uma avaliação para nos contar um pouco dos detalhes do seu processo.
+
+[Resposta do Especialista]
+
+Stack: Spring Boot + Java para apis
+Inputs: group id, artifact id, versao(valor default), versao spring boot(valor default) para passar aplicar os valores no pom.xml
+ComputedInputs: Pacote e pasta para que eu pudesse usar na geração da estrutura de pastas e também na definição dos pacotes
+Hooks: Não foi necessário.
+
+
+Stack: NextJS para construção de frontends com React
+Inputs: apenas usei o nome da app que estava sendo criada
+ComputedInputs: Não foi necessário
+Hooks: Criei para executar o npx create-next-app para materializar o projeto
+
+**Baseado no contexto de documentações, crie templates que possam ajudar pessoas que utilizam alguma das tecnologias citadas.**
+[Leia a descrição do contexto](https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-documentacoes.md) e crie os templates que você entender que fazem sentido.
+
+Após exercitar e criar seus templates que facilitam o consumo de uma documentaeção, você vai precisar responder uma avaliação para nos contar um pouco dos detalhes do seu processo.
+
+[Resposta do Especialista]
+
+Documentação: Spring Framework e toda sua stack.
+
+Template padrão: Projeto web padrão
+Inputs: descricao do projeto, group id, artifact id e versão. Preciso especificar as informações no pom.xml
+ComputedInputs: Criei as variáveis pacote e pasta para materializar corretamente sem precisar de duplicação
+Hooks: Não foi necessário
+
+Template padrão: Projeto reativo
+Inputs: descricao do projeto, group id, artifact id,versão, lista de opções de servidores possíveis. Preciso especificar as informações no pom.xml. O servidor entra para dar a opção de usar o netty.
+ComputedInputs: Criei as variáveis pacote e pasta para materializar corretamente sem precisar de duplicação
+Hooks: Não foi necessário
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
 - [Plugin](https://docs.stackspot.com/docs/getting-started/glossary/#plugin)
 
+- [Templates com Jinja](https://jinja.palletsprojects.com/en/3.1.x/templates/)
