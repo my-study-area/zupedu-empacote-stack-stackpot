@@ -159,6 +159,24 @@ stk -v
 stk login <EMAIL_ADDRESS>
 ```
 
+### Atividades Preparatórias
+**Acompanhe a construção de um template para facilitar a construção de novos projetos utilizando Spring Boot.**
+
+O objetivo desta atividade é que você fique mais próximo(a) de conseguir construir seus próprios templates adequados as necessidades do seu contexto.
+Para isso você vai acompanhar um passo a passo de criação de uma nova stack voltada para o mundo Spring e de um template que permite criar novos projetos web básicos com Spring Boot. No passo a passo vamos usar a parte de parâmetros, aplicação de tais parâmetros no template e também vamos trabalhar com os computed_inputs para evitar duplicação de lógica.
+
+Ao final deste vídeo você vai precisar responder uma avaliação para verificar se de fato absorveu o que era esperado para dar os próximos passos.
+
+- [Passo a passo criando um template que facilita a criação de projetos com Spring Boot](https://www.youtube.com/watch?v=-e4gireEB-Q&ab_channel=4Zuppers)
+
+**Acompanhe a construção de um template para facilitar a criação de projetos que querem usar o NextJS.**
+O objetivo desta atividade é que você fique mais próximo(a) de conseguir construir seus próprios templates adequados as necessidades do seu contexto. Neste caso, explorando a execução de comandos na máquina que são necessários para que o projeto seja criado corretamente.
+
+Em termos de funcionalidades da StackSpot, o passo a passo que vai ser demonstrado usa menos features do que o que foi criado para construir um template para geração de projetos com Spring Boot. Por outro lado vamos explorar o hook do tipo run e executar o comando de criação de aplicações NextJS direto pela CLI da StackSpot.
+
+Ao final deste vídeo você vai precisar responder uma avaliação para verificar se de fato absorveu o que era esperado para dar os próximos passos.
+- [Passo a passo criando um template com hook para facilitar a criação de projetos com NextJS](https://www.youtube.com/watch?v=LUvkn91lj50&ab_channel=4Zuppers)
+
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
