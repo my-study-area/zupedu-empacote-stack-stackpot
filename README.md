@@ -215,6 +215,31 @@ Template padrão: Projeto reativo
 Inputs: descricao do projeto, group id, artifact id,versão, lista de opções de servidores possíveis. Preciso especificar as informações no pom.xml. O servidor entra para dar a opção de usar o netty.
 ComputedInputs: Criei as variáveis pacote e pasta para materializar corretamente sem precisar de duplicação
 Hooks: Não foi necessário
+
+## Identificando e construindo plugins para facilitar configurações iniciais de uma aplicação
+Uma situação recorrente em qualquer momento do ciclo de vida de uma aplicação é a necessidade de realizar uma configuração pela primeira vez. Algumas vezes isso acontece no começo do ciclo de vida, como por exemplo realizar a configuração de acesso a um banco de dados. Outras vezes acontece no meio do projeto, por exemplo realizar uma configuração de um determinado sistema de mensageria que passou a ser necessário naquele contexto. Independente do momento citado, a funcionalidade de criação de plugins da StackSpot cai como uma luva para facilitar a realização deste setup. Este grupo de atividades tem o objetivo de exercitar justamente sua capacidade de construir plugins utilizando a stackspot para facilitar criações de configurações extras em cima de projetos sejam eles construídos via templates de stacks da StackSpot ou não. Abaixo você encontra o resumo dos objetivos de aprendizagem da seção.
+
+- Em função do olhar analítico sobre um contexto a pessoa tem que ser capaz de criar plugins que facilitem configurações de tecnologias dentro dos projetos
+- Ser capaz de parametrizar o plugin atendendo as necessidades das tecnologias do contexto
+- Ser capaz de isolar eventuais tratamentos de inputs em computed inputs para reaproveitá-los dentro das pastas e arquivos do plugin.
+- Ser capaz de criar hooks que permitam a execução de comandos necessários para criação e setups necessários dos plugins.
+
+### Teorias Necessárias
+1 - Relembrando o conceito de um plugin
+
+Vamos apenas relembrar o conceito original de um plugin dentro da StackSpot. Só que também já precisamos deixar em mente que nem sempre o objetivo original é seguido pelas pessoas que usam seu produto. Confira um pouco mais sobre essa visão nesta explicação.
+- [Relembrando o conceito de um plugin](https://www.youtube.com/watch?v=pm5-hMn-1Bc&ab_channel=4Zuppers)
+
+2 - Uma rápida introdução a criação de um plugin
+
+Acompanhe a explicação onde é demonstrada a criação de um plugin bem básico. A ideia é apresentar o comando de criação e a estrutura básica gerada, além das opções iniciais de utilização.
+- [Uma rápida introdução a criação de um plugin](https://youtu.be/tLd-7c7TP4E)
+```bash
+stk create plugin plugin-exemplo
+cd teste-aplicacao/
+# deve ser utilizado dentro da aplicação
+stk apply plugin -p /home/stk/workspace/stack-exemplo-explicacao/plugin-exemplo
+```
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
