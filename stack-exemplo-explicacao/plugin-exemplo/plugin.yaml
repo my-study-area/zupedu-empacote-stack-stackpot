@@ -1,0 +1,26 @@
+name: plugin-exemplo
+description: descricao do plugin
+display-name: plugin-exemplo
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
+  - "Api"
+types:
+  - app
+inputs:
+  - label: Login do banco de dados
+    type: text
+    name: login
+  - label: Senha do banco de dados
+    type: text
+    name: senha
+  - label: String de conexao
+    type: text
+    name: string_conexao
