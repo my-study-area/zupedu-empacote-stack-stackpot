@@ -240,6 +240,23 @@ cd teste-aplicacao/
 # deve ser utilizado dentro da aplicação
 stk apply plugin -p /home/stk/workspace/stack-exemplo-explicacao/plugin-exemplo
 ```
+
+3 - Expandindo o entendimento sobre hooks. Tipos suportados, momentos de aplicação e os tipos que vamos estudar.
+
+Agora é hora de ter um olhar mais profundo sobre as possibilidades dessa feature que vai acompanhar muito dos plugins que você vai criar, os Hooks. Temos alguns tipos, possibilidades de uso e tudo mais. Acompanhe a explicação com o máximo de atenção, talvez ela seja meio densa.
+- [Hooks: Tipos suportados, momentos de aplicação e os tipos que vamos estudar](https://www.youtube.com/watch?v=njEqiBusQtE&ab_channel=4Zuppers)
+
+4 - Demonstrando a criação de hooks em cenários variados
+
+Agora temos mais uma explicação densa, você vai poder ver vários hooks que foram criados utilizando muitas das possibilidades disponíveis.
+
+Vamos explorar os parâmetros, computedInputs, tipos de hooks diferentes etc.
+
+Além disso também é explicado que nem sempre da para fazer um hook que faça 100% do trabalho necessário e talvez nem seja preciso, se você conseguir entregar uns 80% do caminho, já ajuda demais a pessoa que está do outro lado querendo adiantar a vida.
+
+Acompanhe o vídeo para ter uma visão ainda mais clara do que você vai poder fazer.
+- [Demonstrando a criação de hooks em cenários variados](https://www.youtube.com/watch?v=f1QQBwPaD7E&ab_channel=4Zuppers)
+
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
