@@ -276,6 +276,14 @@ stk list stackfile
 stk create app -S /home/stk/workspace/stack-exemplo-explicacao/stackfiles/template-plugin-basico.yaml app-template-plugin-basico
 ```
 
+6 - Publicando sua stack e deixando ela acessível para quem você quiser
+Aqui nós temos uma explicação rápida de como podemos publicar nossa stack num repositório remoto deixando-a acessível para quem a gente quiser.
+- [Publicando sua stack e deixando ela acessível para quem você quiser](https://youtu.be/REY13ZG2bzw)
+```bash
+stk import stack https://github.com/albertotavareszup/stack-alberto-spring
+
+stk list stack
+```
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
