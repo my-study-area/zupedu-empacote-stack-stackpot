@@ -257,6 +257,25 @@ Além disso também é explicado que nem sempre da para fazer um hook que faça 
 Acompanhe o vídeo para ter uma visão ainda mais clara do que você vai poder fazer.
 - [Demonstrando a criação de hooks em cenários variados](https://www.youtube.com/watch?v=f1QQBwPaD7E&ab_channel=4Zuppers)
 
+5 - Hack: Importando stacks localmente para testar mais rapidamente seus stackfiles
+Agora vamos nos aprofundar na criação de stackfiles. A ideia é criar novos pontos de partida para aplicações que façam sentido com o dia a dia de engenharia de determinado contexto.
+
+No momento da criação deste treinamento a CLI da StackSpot exige que uma Stack seja importada de um repositório remoto para que seus templates e plugins fiquem acessíveis para a montagem do stackfile. Entretanto, numa fase de testes pode ser que você não queira publicar sua stack num repositório remoto.
+
+Para superar esse obstáculo nós vamos fazer um mini hack. Vamos entender como a CLI é instalada na nossa máquina e tirar proveito disso para publicar stacks "localmente".
+
+Neste vídeo você acompanha cada detalhe dessa explicação
+- [Hack: Importando stacks localmente para testar mais rapidamente seus stackfiles](https://youtu.be/icmQR1KOjG8)
+```bash
+stk create app -S /home/stk/workspace/stack-exemplo-explicacao/stackfiles/default.yaml app-import-stack-local
+
+stk create stackfile template-plugin-basico
+
+stk list stackfile
+
+stk create app -S /home/stk/workspace/stack-exemplo-explicacao/stackfiles/template-plugin-basico.yaml app-template-plugin-basico
+```
+
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
