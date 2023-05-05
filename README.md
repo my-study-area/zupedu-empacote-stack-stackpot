@@ -315,6 +315,46 @@ ComputedInputs:
 
 Hooks: 1) Hook para editar a classe passada como argumento para realizar a configuração do listener. O tipo é edit e o changes vai ter um snippet que gera a configuração utilizando o parâmetro que representa o nome do tópico. 2) Um hook para gerar a classe responsável por fazer o consumo de fato do tópico também utilizando o parâmetro que tem o nome do tópico. 3) Hook para fazer uma edição do pom.xml caso não exista a dependência do spring kafka.
 
+**Baseado no contexto de documentações, crie pelo menos dois plugins que possam ajudar pessoas que utilizam alguma das tecnologias citadas.**
+
+[Leia a descrição do contexto](https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-documentacoes.md) e crie os plugins que você entender que fazem sentido.
+
+Após exercitar e criar seus plugins que facilitam o consumo de uma documentação, você vai precisar responder uma avaliação para nos contar um pouco dos detalhes do seu processo.
+
+[Resposta do Especialista]
+
+Stack: Javascript + NextJS
+
+Plugin: Gera páginas com recuperação de dados do servidor
+
+Inputs: Input pedindo o caminho para a geração da nova página, input de texto com lista pronta de opções para informar o tipo de recuperação(server side props, static props ou client side com SWR)
+
+Snippets: Snippets com a função específica para cada tipo de busca que possa ser escolhida.
+
+ComputedInputs: Lógica que retornar o caminho do snippet em função da opção de recuperação de dados que foi escolhida.
+
+Hooks: 1) Hook do tipo render-template para gerar o arquivo utilizando o snippet computado em função da opção da pessoa. 2) Hook com condicional para client side com SWR do tipo run. Aqui ele vai rodar o comando npm install para adicionar a dependência do SWR.
+
+Plugin: Geração de arquivos de environment(local e produçao) no projeto. Basicamente os arquivos são colocados na subpasta template do plugin e são materializados no projeto assim que o plugin é aplicado.
+
+Inputs:
+
+ComputedInputs:
+
+Hooks:
+
+**Crie stackfiles considerando o contexto.**
+
+[Leia a descrição do contexto](https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-trabalho.md) e crie dois ou mais stackfiles que você considerar que podem acelerar o começo dos projetos.
+
+[Resposta do Especialista]
+
+1) Stackfile que junta o template de java + spring boot, plugin de
+acesso a banco de dados via spring data jpa, plugin de configuração de acesso a um tópico do sns.
+
+1) Stackfile que junta o template de java + spring boot, plugin de configuração do redis. Aqui é mais para aplicações que fazem um pouco de papel BFFs. Consomem coisas, guardam num cache e servem um cliente.
+
+
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
