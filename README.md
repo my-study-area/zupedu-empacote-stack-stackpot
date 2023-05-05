@@ -284,6 +284,37 @@ stk import stack https://github.com/albertotavareszup/stack-alberto-spring
 
 stk list stack
 ```
+
+### Atividades Preparatórias
+**Passo a passo da criação de um plugin que faz uma configuração de código no projeto**
+
+Neste passo a passo você confere em cada detalhe o que foi necessário para a criação e utilização de alguns plugins.
+- [https://youtu.be/FkY00NZ4N7Y](https://youtu.be/FkY00NZ4N7Y)
+
+### Atividades Obrigatórias
+Baseado no contexto de um projeto que simula um marketplace, identifique e crie no mínimo dois plugins que possam ajudar as equipes de engenharia daquele contexto
+
+[Leia a descrição do contexto](https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-trabalho.md) e crie os plugins que você entender que fazem sentido.
+Após exercitar e criar seus plugins, você vai precisar responder uma avaliação para nos contar um pouco dos detalhes do seu processo.
+
+[Resposta do Especialista]
+
+Stack: Java + Spring Boot
+
+Plugin: Spring Data JPA
+
+Inputs: Input pedindo o login, senha e string de conexão. São parâmetros obrigatórios para acessar o banco de dados. Além disso tem a opção do baco, para rolar geração condicional da configuração do driver.
+
+ComputedInputs:Hooks: Foi necessário um hook para realizar a inserção da configuração necessária do Spring Data JPA no arquivo de configuração. Também foi necessário um hook atrelado a uma condição para escrever a dependência necessária no pom.xml
+
+Plugin: Realizar configuração para consumir mensagem de um tópico do Kafka
+
+Inputs: Input pedindo o nome do tópico que vai ser consumido, input pedindo o nome completo da classe onde a configuração do consumer deve ser gerada, input pedindo para a pessoa escrever o placeholder que vai ser usado demarcar o local da geração do código necessário para configurar o topico que vai ser escutado(aqui é importante pra não precisar de mágica na hora de gerar o código), input pedindo o nome completo da classe que deve ser gerada para já ter o código do consumo de fato.
+
+ComputedInputs:
+
+Hooks: 1) Hook para editar a classe passada como argumento para realizar a configuração do listener. O tipo é edit e o changes vai ter um snippet que gera a configuração utilizando o parâmetro que representa o nome do tópico. 2) Um hook para gerar a classe responsável por fazer o consumo de fato do tópico também utilizando o parâmetro que tem o nome do tópico. 3) Hook para fazer uma edição do pom.xml caso não exista a dependência do spring kafka.
+
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
