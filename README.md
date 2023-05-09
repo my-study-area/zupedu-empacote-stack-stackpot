@@ -354,6 +354,31 @@ acesso a banco de dados via spring data jpa, plugin de configuração de acesso 
 
 1) Stackfile que junta o template de java + spring boot, plugin de configuração do redis. Aqui é mais para aplicações que fazem um pouco de papel BFFs. Consomem coisas, guardam num cache e servem um cliente.
 
+## Criando plugins de uso recorrente
+
+De fato a StackSpot nos ajuda acelerar o começo de novos projetos, já que podemos partir de decisões tomadas por outras pessoas e que, por um conjunto de motivos, também podem fazer sentido para um outro contexto. A combinação de template e plugins através de stackfiles nos possibilita estabelecer estes diferentes pontos de partida. Além disso também já deve ser do seu conhecimento que podemos aplicar plugins em outros momentos do ciclo de vida do projeto, mas ainda com a ideia de criar uma nova configuração. Basicamente um plugin de aplicação única. Só que na vida real passamos muito mais tempo fazendo manutenção, corretiva e evolutiva, de um produto do que só criando novos projetos ou adicionando novas configurações. E é justamente aí nesse cenário que esse conjunto de atividades e teorias tenta te ajudar. Vamos trabalhar na identificação e construção de plugins que possam facilitar atividades do dia a dia, reaproveitando formas de trabalhar que puderam ser materializadas em trechos de código que podem servir de pontos de partida para implementação de novas features, consumo de api's e tudo mais que vier na sua cabeça. Abaixo você encontra o resumo dos objetivos de aprendizagem da seção.
+Em função do olhar analítico sobre as atividades do dia a dia a pessoa tem que ser capaz de criar plugins que facilitem implementações de novas featuers, consumo de documentações, api's etc. E quais são os pré-requisitos necessários para você realizar esta seção?
+Ser capaz de construir templates de maneira fluida;
+Ser capaz de construir plugins de maneira fluida;
+Ser capaz de constuir stackfiles de maneira fluida;
+Ser capaz de explicar o motivo da existência da stackspot facilmente;
+
+### Teorias Necessárias
+1 - Explorando novos contextos de uso da StackSpot
+
+Vamos falar um pouco mais de possibilidades de uso da StackSpot, focando na parte de plugins. Eles foram criados com um objetivo, mas possuem mais poder do que foi imaginado.
+- [Explorando novos contextos de uso da StackSpot](https://youtu.be/wNVIRZJCG9g)
+
+2 - Aplicando plugins em projetos que não nasceram de templates StackSpot
+
+Já existem milhões de projetos criados no planeta e não seria justo que tais projetos não pudessem tirar proveito da StackSpot. Então vamos ver como é possível aplicar plugins em projetos que não nasceram de um template StackSpot.
+
+- [Aplicando plugins em projetos que não nasceram de templates StackSpot](https://youtu.be/oX7jXuFQaZ8)
+
+3 - Plugins que não entregam tudo, mas que adiantam parte do trabalho
+
+Quando pensamos em plugins de uso recorrente acabamos caindo no cenário de alteração de códigos que já existem. Como saber exatamente onde encaixar o novo código? Em vez de deixar o plugin muito complexo, de vez em quando vale a pena simplesmente pedir ajuda da pessoa dev para que o plugin possa ser aplicado corretamente.
+- [Plugins que não entregam tudo, mas que adiantam parte do trabalho](https://youtu.be/TzcDobB12kk)
 
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
