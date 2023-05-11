@@ -1,0 +1,24 @@
+name: template-spring-default
+description: template spring default
+types:
+  - app-template
+inputs:
+  - label: Nome do projeto
+    type: text
+    name: nome_projeto
+    default: nomeProjeto
+  - label: Descricao
+    type: text
+    name: descricao
+    required: true
+  - label: Group id
+    type: text
+    name: group_id
+    default: br.com.dominio
+  - label: Artifact
+    type: text
+    name: artifact
+    default: projeto
+computedInputs:
+  pacote_base: "{{group_id}}.{{nome_projeto}}"
+  pastas: "{{computed_inputs.pacote_base | replace('.','/')}}"
