@@ -15,17 +15,19 @@ technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/ya
 types:
   - app
 inputs:
-  - label: Input Example
+  - label: Usuario do banco de dados
     type: text
-    name: example
-    default: any text
-  - label: Example of number
-    type: int
-    name: any_number
-    default: "10"
-  - label: Example of list
-    type: multiselect
-    name: any_list
-    items:
-      - item1
-      - item2
+    name: usuario
+    default: usuario
+  - label: Senha do banco de dados
+    type: text
+    name: senha
+    default: "123@abc"
+  - label: Porta padrao do banco de dados
+    type: text
+    name: porta
+    default: 5433
+  - label: Nome do banco de dados
+    type: text
+    name: banco_dados
+    default: meu_banco_dados
