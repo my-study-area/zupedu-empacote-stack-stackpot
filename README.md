@@ -380,6 +380,39 @@ Já existem milhões de projetos criados no planeta e não seria justo que tais 
 Quando pensamos em plugins de uso recorrente acabamos caindo no cenário de alteração de códigos que já existem. Como saber exatamente onde encaixar o novo código? Em vez de deixar o plugin muito complexo, de vez em quando vale a pena simplesmente pedir ajuda da pessoa dev para que o plugin possa ser aplicado corretamente.
 - [Plugins que não entregam tudo, mas que adiantam parte do trabalho](https://youtu.be/TzcDobB12kk)
 
+### Atividades Obrigatórias
+Baseado nos contextos compartilhados, você deve criar no mínimo dois plugins que facilitem tarefas rotineiras.
+
+[Leia a descrição do contexto de trabalho](https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-trabalho.md) e também o [contexto sobre documentações](https://github.com/zup-academy/materiais-publicos-treinamentos/blob/main/treinamento-criadores-stacks-stackspot/contextos-documentacoes.md).
+
+Após exercitar e criar seus plugins, você vai precisar responder uma avaliação para nos contar um pouco dos detalhes do seu processo.
+
+Para cada plugin criado, justifique o motivo. Também explique os parâmetros de entrada(caso existam), os computed_inputs(caso existam) e hooks(casos existam). E para cada item do plugin também justifique o motivo. Lembre, você precisa ter construído pelo menos dois plugins.
+
+[Resposta do Especialista]
+
+Stack: Java + Spring Boot
+
+Plugin: Criação de novos endpoints que aceitam POST
+
+Motivo geral: Criar novos endpoints post para o contexto tem passos repetidos. Cria o controller, cria o método, anota, cria a classe que mapeia os dados de request etc. A ideia foi facilitar o processo.
+
+Inputs: pacote do controller para saber onde o controller vai viver, nome simples da classe do controller, booleano para saber se o controller já existe, place holder para a pessoa especificar o ponto de alteração da classe que já existe, nome do método, endereço do endpoint, pacote para a classe do request, nome da classe do request.
+
+ComputedInputs: Duas chaves novas. Uma para ter o caminho da pasta de geração do controller e outra para ter a geração do arquivo com o código da classe de request.
+
+Snippets: Snippet com o código de método para ser gerado no caso da seleçao da opção de controller existente.
+
+Hooks: 1) Hook do tipo edit para alterar o controller em caso de ter sido escolhida a opção de controller existente. Dentro do changes foi utilizado o search + replace by para substituir o placeholder. 2) Hook do tipo render-template para gerar o novo controller no caso de ter sido selecionada a opção dizendo que não existe o controller. 3) Hook do tipo render-template para gerar a classe de request.
+
+Plugin: Gerador de código cliente para consumo da api do github
+
+Inputs: Seleção da stack que deseja gerar o client e também o endpoint que deseja ser consumido.
+
+ComputedInputs:
+
+Hooks: Um hook render-template para cada combinação de stack com endpoint necessário para consumo.
+
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
