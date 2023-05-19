@@ -413,6 +413,27 @@ ComputedInputs:
 
 Hooks: Um hook render-template para cada combinação de stack com endpoint necessário para consumo.
 
+## Plugins mais genéricos e que merecem repositórios próprios
+Alguns plugins acabam ficando tão genéricos que acaba não fazendo muito sentido viverem dentro de uma única stack. Por exemplo, um plugin que configura um ORM para uma determinada tecnologia. Essa configuração tende a ser cross múltiplos contextos que usam aquela determinada tecnologia. E se é cross, será que não é melhor deixá-lo disponível para que outras stacks também possam utilizá-lo? A StackSpot além de facilitar a materialização e distribuição de conceitos, também facilita a colaboração. Este grupo de atividades e teorias tem o objetivo de exercitar justamente sua capacidade de extrair um plugin para um repositório próprio e, posteriormente, adicioná-lo como parte de uma stack. O mesmo pode ser feito para templates, inclusive. Abaixo você encontra o resumo dos objetivos de aprendizagem da seção.
+
+- Ser capaz de extrair um plugin para um repositório próprio por perceber que ele não tem nenhum acoplamento com uma stack em específico;
+- Ser capaz de aproveitar plugins existentes para adicioná-los em novas stacks; E quais são os pré-requisitos necessários para você realizar esta seção?
+  - Ser capaz de construir templates de maneira fluida;
+  - Ser capaz de construir plugins de maneira fluida;
+  - Ser capaz de constuir stackfiles de maneira fluida;
+  - Ser capaz de analisar o nível de desacoplamento entre um plugin e um template;
+  - Ser capaz de explicar o motivo da existência da stackspot facilmente;
+
+### Teorias Necessárias
+1 - Extraindo plugins para repositórios próprios
+Nesta explicação olhamos para os plugins para perceber se eles de fato precisam viver acoplados a uma determinada stack. Muitas vezes isso vai ser verdade, mas outras vezes não. Será que ele pode ter vida própria?
+- [Extraindo plugins para repositórios próprios](https://youtu.be/CeMnRnbb3PE)
+
+2 - Adicionando plugins existentens em uma nova stack
+Dado que um plugin que faz exatamente o que é necessário já existe, para que criar de novo? Vamos ver exatamente como podemos incoportar plugins existentes a stacks novas.
+- [Adicionando plugins existentens em uma nova stack](https://youtu.be/wBuiztB3yuY)
+
+
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
