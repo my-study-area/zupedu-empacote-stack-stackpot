@@ -1,0 +1,674 @@
+BANNER: |
+  
+  *********************************************************************
+  *                           StackSpot CLI                           *
+  *********************************************************************
+
+  Consulte a documentação em https://docs.stackspot.com/
+  
+ABORTED: "Abortado!"
+DOC_MSG_URL: "Verifique as stacks em {AVAILABLE_STACKS_DOCS_URL}"
+CLI_COMMAND_NAME: "stk"
+COMMANDS: "Comandos"
+COMMAND_MANUALLY_INTERRUPTED_BY_THE_USER: "Comando interrompido manualmente pelo usuário."
+DEPRECATED_TEXT: "(Depreciado) {text}"
+DID_YOU_MEAN: "(Você quis dizer {possibility}?)"
+ERROR_LABEL: "ERRO: "
+WARNING_LABEL: "AVISO: "
+WARNING_MESSAGE: "Aviso: {message}"
+ERROR_MESSAGE: "Erro: {message}"
+MISSING_ARGUMENT: "Falta argumento"
+MISSING_OPTION: "Falta opção"
+MISSING_PARAMETER: "Falta parâmetro"
+MISSING_PARAM_TYPE: "Falta {param_type}"
+NO_SUCH_COMMAND: "O comando '{cmd_name}' não existe."
+NO_SUCH_OPTION: "A opção '{option_name}' não existe."
+OPTIONS: "Opções"
+POSSIBLE_OPTIONS: "(Opções possíveis: {possibilities})"
+SHOW_CLI_VERSION: "Exibe versão do {cli_command_name} CLI."
+SHOW_THIS_MESSAGE_AND_EXIT: "Exibe ajuda do comando e sai."
+USAGE_PREFIX: "Uso: "
+TRY_FOR_HELP: "Execute '{command} {option}' para exibir a ajuda."
+XPTO: "XPTO2 {abc}"
+
+# literal translations
+"[OPTIONS]": "[OPÇÕES]"
+"COMMAND [ARGS]...": "COMANDO [ARGUMENTOS]..."
+
+# Command help messages
+STK_ADD_HELP: "Comandos para adicionar plugins ou templates a uma stack."
+STK_ADD_PLUGIN_HELP: |
+  Adiciona um plugin a uma stack.
+
+  Execute este comando dentro da pasta criada pelo comando '{CLI_COMMAND_NAME} create stack' para adicionar um plugin na stack.
+
+  O paramâmetro REPO_URL_OR_PATH pode ser a url de um repositorio git ou uma pasta criada pelo comando '{CLI_COMMAND_NAME} create plugin'.
+
+  Quando uma url de um repositório git é usada, o plugin é adicionado à stack como um submódulo do repositório git da stack e terá seu próprio repositorio git. Use esta opção quando quiser adicionar o mesmo plugin em mais de uma stack.
+
+  Quando uma pasta é utilizada, o conteúdo do plugin é copiado para dentro da pasta da stack desconsiderando o repositório git do plugin. Use esta opção para migrar um plugin criado fora da pasta da stack para dentro da pasta da stack. Neste caso, o plugin não pode ser compartilhado com outras stacks. 
+
+  \b
+  Exemplos: {CLI_COMMAND_NAME} add plugin https://github.com/my-org/my-plugin
+            {CLI_COMMAND_NAME} add plugin /path/to/plugin-folder
+STK_ADD_STAGES_HELP: |
+  Adiciona novos arquivos de configuração de estágios a um aplicativo ou ambiente [DEPRECIADO].
+
+  Use este comando quando precisar adicionar um novo arquivo de configuração json ao diretório stage de
+  uma stack criada com '{CLI_COMMAND_NAME} create app' ou '{CLI_COMMAND_NAME} create env'[DEPRECIADO].
+
+  O argumento STAGES deve seguir o formato '<stage-name>:<aws-account-number>:<aws-region>' e
+  você pode adicionar vários estágios de uma vez, separando os valores por vírgula.
+
+  \b
+  Exemplo:
+      {CLI_COMMAND_NAME} add stages qa:12345:us-east-1,production:65432:us-east-2
+STK_ADD_TEMPLATE_HELP: |
+  Adiciona um template em uma stack.
+
+  Execute este comando dentro de uma pasta criada pelo comando '{CLI_COMMAND_NAME} create stack' para adicionar um template
+  em uma stack.
+
+  O parâmetro REPO_URL_OR_PATH pode ser uma URL de repositório git ou um caminho para uma pasta criada
+  com o comando '{CLI_COMMAND_NAME} create template'.
+
+  Quando uma url de um repositório git é usada, o template é adicionado à stack como um submódulo do repositório git da stack e terá seu próprio repositorio git. Use esta opção quando quiser adicionar o mesmo template em mais de uma stack.
+
+  Quando o caminho de uma pasta é usado, o conteúdo do template será copiado para uma stack e seu código fonte
+  fará parte do código fonte da stack. Você pode usar esta opção para migrar um template criado fora da pasta da stack
+  para dentro da pasta da stack. Neste caso, o template não pode ser compartilhado com outras stacks.
+
+  \b
+  Exemplo: {CLI_COMMAND_NAME} add template https://github.com/my-org/my-template
+            {CLI_COMMAND_NAME} add plugin /path/to/template-folder
+STK_APPLY_HELP: "Comando para aplicar plugins."
+STK_APPLY_PLUGIN_HELP: |
+  Comando para aplicar o plugin para uma aplicação ou ambiente [DEPRECIADO].
+
+  O plugin é utilizado para adicionar novas capacidades a um projeto criado com '{CLI_COMMAND_NAME} create app' ou '{CLI_COMMAND_NAME} create env' [DEPRECIADO].
+  Para executar o comando '{CLI_COMMAND_NAME} apply plugin' você deve estar dentro da pasta da stack.
+  O parâmetro NAME indica qual plugin será aplicado e deve seguir o formato [<stack>/]<nome-plugin>.
+  Quando a stack é omitida o plugin aplicado será pesquisado dentro da stack
+  do template que foi utilizado no comando '{CLI_COMMAND_NAME} create app'. A aplicação de um plugin de outra stack é permitida, mas um aviso
+  será omitido e você precisa confirmar a aplicação, porque os plugins de uma stack podem ser incompatíveis com os templates da outra stack.
+  Somente aplique um plugin de outra stack quando tiver certeza de que o plugin é compatível com o template usado para criar a stack.
+
+  Para listar os plugins disponíveis para seu projeto, você pode usar o comando '{CLI_COMMAND_NAME} list plugin' dentro da pasta do projeto.
+
+  Exemplo: {CLI_COMMAND_NAME} apply plugin some-stack/some-plugin
+STK_APPLY_PLUGIN_OPTION_PLUGIN_PATH_HELP: |
+  Caminho para a pasta do plugin a ser aplicado.
+
+  Você pode usar este parâmetro para fazer testes locais de plugins criados pelo comando '{CLI_COMMAND_NAME} create plugin'
+  antes de publicá-lo em uma stack.  
+STK_APPLY_PLUGIN_OPTION_SKIP_TARGET_WARNING_HELP: "Ignora o aviso de aplicação de plugins em um projeto que não foi criado com a StackSpot."
+STK_CALL_ACTION_HELP: "Execute actions externas de sua organização."  
+STK_CALL_HELP: "Comando para executar actions."
+STK_CREATE_APP_HELP: |
+  Comando para criar um projeto de aplicação
+
+  Este comando inicializa um projeto de aplicação baseado em um template.
+  Você precisa usar 'template' ou 'template-path' para indicar qual template que será utilizado
+  para criar a aplicação.
+  É necessário informar 'template' ou 'template-path' e não podem ser utilizados juntos.
+
+  Você pode usar 'template-path' para testar templates de aplicação criados pelo '{CLI_COMMAND_NAME} create template'
+  antes de publicá-los em uma stack.
+
+  \b
+  Exemplo:
+      {CLI_COMMAND_NAME} create app some-app
+          --template some-stack/some-app-template
+          --remote https://github.com/some-org/some-app
+STK_CREATE_APP_OPTION_BRANCH_HELP: |
+  [DEPRECIADO] Quando usado em conjunto com a opção 'env-url' indica qual
+  branch do repositório git do ambiente para usar ao copiar arquivos de estágios para o aplicativo.  
+STK_CREATE_APP_OPTION_ENV_HELP: |
+  [DEPRECIADO] Associa o aplicativo criado a um ambiente..
+  
+  Ao usar esta opção, as etapas do projeto do aplicativo criado serão
+  copiados do ambiente e armazenados no repositório git 'env-url'.
+  
+  Não use esta opção junto com a opção 'estágios'.
+STK_CREATE_APP_OPTION_REMOTE_HELP: |
+  URL git para definir como origem o respositório do aplicativo. Obrigatório quando NAME não é fornecido,
+  neste caso, o NAME será definido como nome do repositório git.
+STK_CREATE_APP_OPTION_STACKFILE_HELP: |
+  Use um stackfile para criar um aplicativo com um template predefinido e um conjunto de plugins.
+  
+  Esta opção não pode ser usada junto com 'template' ou 'template-path'.
+  
+  Exemplo:
+  {CLI_COMMAND_NAME} create app my-app --stackfile my-stack/my-stackfile
+  
+  {CLI_COMMAND_NAME} create app my-app --stackfile my-stackfile.yaml
+STK_CREATE_APP_OPTION_STAGES_HELP: |
+  [DEPRECIADO] Parâmetro opcional para definir estágios de aplicativos.
+  O formato esperado é: <stage-name>:<account-id>:<aws-region>.
+  
+  Não use esta opção junto com a opção 'env-url'.
+STK_CREATE_APP_OPTION_TEMPLATE_HELP: |
+  Template de aplicação a ser usado.
+  O formato esperado é: <stack>/<template-name>.
+  
+  Você pode usar o comando '{CLI_COMMAND_NAME} list templates --app' para descobrir quais templates estão disponíveis para
+  criar projetos de aplicativos.
+STK_CREATE_APP_OPTION_TEMPLATE_PATH_HELP: |
+  Caminho para a pasta do template de aplicativo criada com '{CLI_COMMAND_NAME} create template'.
+  
+  Você pode usar este parâmetro para fazer testes locais de templates de aplicação criados pelo comando
+  '{CLI_COMMAND_NAME} create template' antes de publicá -lo em uma stack.
+STK_CREATE_ENV_HELP: |
+  [DEPRECIADO]Comando para criar uma stack de ambiente.
+
+  Este comando inicializa uma stack de ambiente com base em um template.
+  Você precisa usar 'template' ou 'template-path' para indicar qual template será usado para criar o
+  ambiente.
+  É necessário para informar 'template' ou 'template-path', eles não podem ser usados juntos.
+
+  Você pode usar 'template-path' para testar templates de ambiente criados pelo comando '{CLI_COMMAND_NAME} create template' antes de publicá -lo em uma pilha.
+
+  \b
+  Exemplo:
+      {CLI_COMMAND_NAME} create env some-env
+          --template some-stack/some-env-template
+          --remote https://github.com/some-org/some-env
+          --stages dev:12345:us-east-1,staging:54321:us-east-1    
+STK_CREATE_ENV_OPTION_REMOTE_HELP: |
+  [DEPRECIADO] URL git para definir como origem do repositório Env. Obrigatório quando o NAME não é fornecido,
+  Nesse caso, o NAME será definido como nome do repositório git.
+STK_CREATE_ENV_OPTION_STACKFILE_HELP: |
+  Use um stackfile para criar um env com um template predefinido e um conjunto de plugins.
+  
+  Esta opção não pode ser usada junto com 'template' ou 'template-path'.
+  
+  Exemplo:
+  {CLI_COMMAND_NAME} create env my-env --stackfile my-stack/my-stackfile
+  
+  {CLI_COMMAND_NAME} create env my-env --stackfile my-stackfile.yaml
+STK_CREATE_ENV_OPTION_STAGES_HELP: |
+  Parâmetro para definir estágios do ambiente.
+  O formato esperado é: <stage-name>:<account-id>:<aws-region>.
+STK_CREATE_ENV_OPTION_TEMPLATE_HELP: |
+  Template de ambiente para usar.
+  O formato esperado: <stack>/<template-name>.
+  
+  Você pode usar o comando '{CLI_COMMAND_NAME} list templates --env' para descobrir quais templates estão disponíveis
+  para criar stacks de ambiente.
+STK_CREATE_ENV_OPTION_TEMPLATE_PATH_HELP: |
+  Caminho para a pasta do template de ambiente criada com o comando '{CLI_COMMAND_NAME} create template'.
+  
+  Você pode usar este parâmetro para fazer testes locais de templates de ambiente criados pelo comando
+  '{CLI_COMMAND_NAME} create template' 
+  antes de publicá -lo em uma stack.            
+STK_CREATE_HELP: "Comandos para criar stacks e seus componentes."
+STK_CREATE_PLUGIN_HELP: |
+  Cria a estrutura básica de um plugin.
+
+  Execute dentro de uma stack criada com o comando '{CLI_COMMAND_NAME} create stack', para criar um plugin de uso exclusivo da stack.
+
+  Execute fora de uma stack, para inicializar um repositório git para o plugin. Utilize essa opção para poder adicionar o mesmo plugin em mais de uma stack através do comando '{CLI_COMMAND_NAME} add plugin'.
+
+  \b
+  Exemplo:
+    {CLI_COMMAND_NAME} create plugin meu-plugin --description "Meu plugin."
+STK_CREATE_PLUGIN_OPTION_DESCRIPTION_HELP: "Texto descrevendo o plugin e seu propósito. Coloque o texto entre aspas para usar espaços na descrição."
+STK_CREATE_PLUGIN_OPTION_REMOTE_HELP: "Git url para definir como origem do repositório do plugin. Obrigatório quando NAME não for fornecido, neste caso o NAME será definido como nome do repositório git."
+STK_CREATE_STACKFILE_HELP: "Cria um exemplo básico do stackfile a ser usado ao desenvolver um novo stackfile."
+STK_CREATE_STACKFILE_OPTION_DESCRIPTION_HELP: |
+  Texto descrevendo a stack e seu objetivo.
+  Coloque a descrição do TEXT entre aspas para poder usar espaços na descrição.
+STK_CREATE_STACK_HELP: |
+  Crie um repositório de stack vazio para publicar templates e plugins.
+
+  \b
+  Exemplo:
+      {CLI_COMMAND_NAME} create stack my-powerful-stack
+          --remote https://github.com/my-organization/my-powerful-stack  
+STK_CREATE_STACK_OPTION_DESCRIPTION_HELP: "Descrição completa da sua stack. Descreva o objetivo da stack criada."
+STK_CREATE_STACK_OPTION_REMOTE_HELP: |
+  URL git para definir como origem do repositório da stack. Obrigatório quando o NAME não é fornecido,
+  Nesse caso, o NAME será definido como nome do repositório git.
+STK_CREATE_TASK_HELP: |
+  Crie um arquivo de task básico.
+
+  Tasks são comandos personalizados, complementares aos principais comandos do STK CLI.
+  Elas permitem que você execute operações personalizadas em seu projeto ou stack (por exemplo, configure seu ambiente,
+  implante seu aplicativo, execute scripts, etc).
+
+  \b
+  Exemplo:
+      {CLI_COMMAND_NAME} create task <task-name>
+      {CLI_COMMAND_NAME} create task <task-name> --description "My task description"
+
+  Este comando deve ser executado dentro da pasta de uma stack.        
+STK_CREATE_TASK_OPTION_DESCRIPTION_HELP: |
+  Texto que descreve a task e seu objetivo.
+  Coloque a descrição do TEXT entre aspas para poder usar espaços na descrição.
+STK_CREATE_TEMPLATE_HELP: "Crie uma estrutura de template pronta para ser enviada para um repositório git e depois adicionada a uma stack."
+STK_CREATE_TEMPLATE_OPTION_DESCRIPTION_HELP: |
+  Texto que descreve o template e seu objetivo.
+  Coloque a descrição do TEXT entre aspas para poder usar espaços na descrição.
+STK_CREATE_TEMPLATE_OPTION_REMOTE_HELP: |
+  URL git para definir como origem do repositório do template. Obrigatório quando o NAME não é fornecido,
+  Nesse caso, o NAME será definido como nome do repositório Git.
+STK_DELETE_HELP: "Comandos para remover stacks do STK CLI e componentes da stack."
+STK_DELETE_PLUGIN_HELP: |
+  Deleta um plugin de uma stack.
+
+  Execute este comando dentro da pasta da stack.
+
+  Exemplo: {CLI_COMMAND_NAME} delete plugin plugin_folder
+
+  Git: Este comando cria automaticamente uma confirmação das alterações. Você ainda precisará
+  fazer o 'push' das mudanças.
+STK_DELETE_STACK_HELP: |
+  Deleta uma stack e seus templates e plugins, a stack não será mais listada no comando '{CLI_COMMAND_NAME} list stack'.
+
+  Exemplo: {CLI_COMMAND_NAME} delete stack my-stack
+STK_DELETE_TEMPLATE_HELP: |
+  Deleta o template de uma stack. Execute este comando dentro da pasta da stack.
+
+  Execute este comando dentro da pasta da stack.
+
+  Example: {CLI_COMMAND_NAME} delete template template_folder
+
+  Git: Este comando cria automaticamente uma confirmação das alterações. Você ainda precisará
+  fazer o 'push' das mudanças.
+STK_DEPLOY_HELP: "Implanta para o estágio definido pelo argumento STAGE."  
+STK_IMPORT_HELP: "Comando para importar stacks para uso no STK CLI."
+STK_IMPORT_STACK_HELP: |
+ Importa uma stack para o STK CLI.
+ Execute este comando para importar uma stack para o STK CLI e usar seus plugins e templates.
+
+  Exemplo: {CLI_COMMAND_NAME} import stack https://github.com/my-org/my-stack
+STK_INIT_HELP: "Comando para inicializar e configurar o STK CLI."
+STK_INIT_OPTION_CLEAN_HELP: "Remove a configuração do STK CLI antes de aplicar novas configurações."
+STK_INIT_OPTION_DISABLE_SSL_VERIFY_HELP: "Desativa a validação do certificado SSL nas conexões HTTPS."
+STK_INIT_OPTION_PROXY_EXCLUSIONS_HELP: "Lista de URLs separados por vírgula que devem ser excluídas da conexão de proxy configurada."
+STK_INIT_OPTION_PROXY_HELP: "Endereço de proxy a ser usado nas conexões HTTPS."
+STK_LIST_ACTION_HELP: "Lista as actions disponíveis em sua organização."
+STK_LIST_ACTION_OPTION_FILTER_HELP: "Filtra as actions por nome ou descrição."
+STK_LIST_ACTION_OPTION_JSON_HELP: "Imprime a saída como uma string JSON."
+STK_LIST_ACTION_OPTION_TYPE_HELP: "Filtra as actions por tipo (extension or remote)."
+STK_LIST_HELP: "Comandos para listar stacks e seus componentes."
+STK_LIST_PLUGIN_HELP: |
+  Lista os plugins importados no STK CLI.
+  
+  Plugins locais são usados em um aplicativo com a flag --local dentro da pasta de um aplicativo.
+STK_LIST_PLUGIN_OPTION_ALL_HELP: "Lista todos os plugins de uma stack."
+STK_LIST_PLUGIN_OPTION_APP_HELP: "Lista todos os plugins do tipo app"
+STK_LIST_PLUGIN_OPTION_ENV_HELP: "[DEPRECIADO] Lista todos os plugins do tipo env."
+STK_LIST_PLUGIN_OPTION_FILTER_HELP: "Filtra plugins por nome ou descrição."
+STK_LIST_PLUGIN_OPTION_JSON_HELP: "Imprime a saída como uma string JSON."
+STK_LIST_PLUGIN_OPTION_LOCAL_HELP: "Lista os plugins aplicados ao projeto"
+STK_LIST_STACKFILE_HELP: |
+  Lista os stackfiles importados no STK CLI.
+
+  Os stackfiles são responsáveis por definir uma receita para criar um aplicativo ou ambiente usando um template e um conjunto predefinido de plugins.
+  Este comando pode ser usado para listar arquivos stackfiles predefinidos incluídos nas stacks importadas no STK CLI.
+
+  \b
+  Exemplo:
+      {CLI_COMMAND_NAME} list stackfile some-stack-name --app
+STK_LIST_STACKFILE_OPTION_APP_HELP: "Lista todos os stackfiles do tipo app."
+STK_LIST_STACKFILE_OPTION_ENV_HELP: "[DEPRECIADO] Lista todos os stackfiles do tipo env."
+STK_LIST_STACKFILE_OPTION_FILTER_HELP: "Filtro os stackfiles por nome ou descrição."
+STK_LIST_STACKFILE_OPTION_JSON_HELP: "Imprime a saída como uma string JSON."
+STK_LIST_STACK_HELP: |
+  Lista stacks importadas no STK CLI.
+
+  As stacks podem ser filtradas por nome e descrição usando o parâmetro --filter.
+STK_LIST_STACK_OPTION_FILTER_HELP: "Filtra stacks por nome ou descrição."
+STK_LIST_STACK_OPTION_JSON_HELP: "Imprime a saída como uma string JSON."
+STK_LIST_TASK_HELP: |
+ Lista tasks de todas as stacks.
+ As tasks são comandos personalizados, complementares aos comandos do STK CLI.
+ Eles permitem que você execute operações personalizadas em seu projeto ou stack (por exemplo, implantar seu aplicativo, executar scripts, etc.).
+
+  \b
+  Exemplo:
+      {CLI_COMMAND_NAME} list task
+      {CLI_COMMAND_NAME} list task <stack-name>
+      {CLI_COMMAND_NAME} list task --filter deploy
+STK_LIST_TASK_OPTION_FILTER_HELP: "Filtra tasks pelo nome ou descrição."
+STK_LIST_TASK_OPTION_JSON_HELP: "Imprime a saída como uma string JSON."
+STK_LIST_TEMPLATE_HELP: "Lista os templates de todas as stacks do STK CLI."
+STK_LIST_TEMPLATE_OPTION_APP_HELP: "Lista todos os templates do tipo app-template."
+STK_LIST_TEMPLATE_OPTION_ENV_HELP: "[DEPRECIADO] Lista todos os templates do tipo env-template."
+STK_LIST_TEMPLATE_OPTION_FILTER_HELP: "Filtra templates por nome ou descrição."
+STK_LIST_TEMPLATE_OPTION_JSON_HELP: "Imprime a saída como uma string JSON."
+STK_LOGIN_HELP: "Comando para efetuar login em uma conta StackSpot."
+STK_LOGIN_MESSAGE_LOGIN_EMAIL: "E-mail do login:"
+STK_LOGIN_OPTION_CLIENT_ID_HELP: "ID do cliente gerado no site da StackSpot."
+STK_LOGIN_OPTION_CLIENT_KEY_HELP: "Chave do cliente gerada no site da StackSpot."
+STK_LOGIN_OPTION_REALM_HELP: "Domínio da organização StackSpot do cliente."
+STK_LOGOUT_HELP: "Comando para efetuar logout de uma conta StackSpot."
+STK_RUN_HELP: |
+  Comando para executar uma task.
+
+  Tasks são comandos customizados de uma stack que podem complementar os comandos core do STK CLI da StackSpot.
+  Eles permitem a execução de tarefas relacionadas à stack como por exemplo configuração de ambiente (depreciado), automação da execução de scripts e outras automações.
+
+  Você pode executar tasks que estejam um uma stack ou executar tasks locais usando o parâmetro -p.
+
+  \b
+  Exemplos:
+      {CLI_COMMAND_NAME} run <task-name>
+      {CLI_COMMAND_NAME} run <stack-name>/<task-name>
+      {CLI_COMMAND_NAME} run -p <absolute-path-to-your-task>
+STK_RUN_OPTION_TASK_PATH_HELP: |
+  Caminho para executar a pasta de tasks.
+  Você pode usar este parâmetro para realizar testes locais de tasks criadas com o comando '{CLI_COMMAND_NAME} create task' antes de publicá-las em uma stack.
+STK_RUN_OPTION_NO_DOCKER_CACHE_HELP: |
+  Desabilita o cache do docker (pull e build) para tasks que usam containers.
+  Se a task não usar um container, esta flag será ignorada.
+STK_TEST_HELP: "Comandos para testar sua stack, templates e plugins."
+STK_TEST_PLUGIN_HELP: |
+  Comando para testar seus plugins.
+  
+  Execute o(s) caso(s) de teste(s) do seu plugin.yaml.
+  Este comando não validará a estrutura do seu plugin, somente o código gerado.
+  A stack necessita ser importada antes e o comando deve ser executado dentro do diretório da stack.
+  
+  \b
+  Exemplo:
+      {CLI_COMMAND_NAME} test plugin
+      {CLI_COMMAND_NAME} test plugin <plugin-nome>
+      {CLI_COMMAND_NAME} test plugin <plugin-nome>:<caso-teste-01>
+STK_TEST_STACK_HELP: |
+  Comando para testar seus templates e plugins.
+  
+  Execute o(s) caso(s) de teste(s) do seu plugin.yaml e template.yaml.
+  Este comando não validará a estrutura do seu plugin, somente o código gerado.
+  A stack necessita ser importada antes e o comando deve ser executado dentro do diretório da stack.
+  
+  \b
+  Exemplo:
+      {CLI_COMMAND_NAME} test stack
+STK_TEST_TEMPLATE_HELP: |
+  Comando para testar seus templates.
+  
+  Execute o(s) caso(s) de teste(s) do seu plugin.yaml.
+  Este comando não validará a estrutura do seu plugin, somente o código gerado.
+  A stack necessita ser importada antes e o comando deve ser executado dentro do diretório da stack.
+  
+  \b
+  Exemplo:
+      {CLI_COMMAND_NAME} test template
+      {CLI_COMMAND_NAME} test template <template-nome>
+      {CLI_COMMAND_NAME} test template <template-nome>:<caso-teste-01>
+STK_UPDATE_ENV_HELP: "[DEPRECIADO] Comando para atualizar um ambiente"
+STK_UPDATE_ENV_OPTION_TARGET_HELP: "[DEPRECIADO] Destino do ambiente a ser atualizado."      
+STK_UPDATE_HELP: "Comando para atualizar stacks."
+STK_UPDATE_STACK_HELP: "Comando para atualizar stacks."
+STK_UPGRADE_HELP: "Comando para atualizar o STK CLI para a versão mais recente."
+STK_UPGRADE_OPTION_FORCE_UPDATE_HELP: "Força o CLI a fazer o upgrade para nova versão principal."
+STK_UPGRADE_INFO_DOWNLOADING_WRAPPER: "Fazendo o download do wrapper atualizado..."
+STK_UPGRADE_INFO_WRAPPER_DOWNLOADED: "Wrapper baixado."
+STK_UPGRADE_INFO_WRAPPER_UPDATED: "Wrapper atualizado."
+STK_UPGRADE_ERROR_COULD_NOT_BE_UPGRADED: "Wrapper não pode ser atualizado. Verifique os logs para mais detalhes."
+STK_VALIDATE_HELP: "Comando para validar a estrutura do seu projeto."
+STK_VALIDATE_STACK_HELP: |
+  Comando para validar a estrutura da sua stack
+  
+  Os arquivos ignorados no seu .stackignore e .gitignore não serão validados.
+  
+  \b
+  Exemplo:
+      {CLI_COMMAND_NAME} validate stack
+STK_VALIDATE_STACK_OPTION_VERBOSE_HELP: "Apresentar validação com maior detalhamento."
+
+STK_MESSAGE_ABORTED_EXCEPTION_ABORTED_SUCCESSFULLY: "Abortado com sucesso."
+STK_MESSAGE_BUSINESS_EXCEPTION_A_CYCLIC_REFERENCE_WAS_FOUND_IN_THE_REQUIREMENTS: "Uma referência cíclica foi encontrada nos requisitos.\n> {definition_name} é um requisito de {requirement_parent}."
+STK_MESSAGE_BUSINESS_EXCEPTION_ADD_ENTITY_MUST_RUN_INSIDE_A_STACK_FOLDER: "O comando '{CLI_COMMAND_NAME} add {entity}' deve ser executado dentro da pasta da stack criada pelo comando '{CLI_COMMAND_NAME} create stack'!" 
+STK_MESSAGE_BUSINESS_EXCEPTION_ADD_STAGES_CANNOT_BE_RUN_IN_A_EMPTY_DIRECTORY: "'O '{CLI_COMMAND_NAME} add stages' não pode ser executado em uma pasta vazia!"  
+STK_MESSAGE_BUSINESS_EXCEPTION_APPLICATION_TEMPLATE_IN_PATH_IS_INVALID: "O template de aplicação no {template_path} é inválido: O template não é do tipo 'app-template'!" 
+STK_MESSAGE_BUSINESS_EXCEPTION_APPLICATION_TEMPLATE_PATH_DOESNT_EXIST: "O template de aplicação {template_path} não existe!\nUse o comando '{CLI_COMMAND_NAME} list template --app' para listar os templates de aplicação disponíveis."
+STK_MESSAGE_BUSINESS_EXCEPTION_APPLICATION_TEMPLATE_STACK_TEMPLATE_DOESNT_EXIST: "O template de aplicação {stack}/{template_name} não existe!\nUse o comando '{CLI_COMMAND_NAME} list template --app' para listar os templates de aplicação disponíveis."
+STK_MESSAGE_BUSINESS_EXCEPTION_APPLICATION_TEMPLATE_STACK_TEMPLATE_IS_INVALID: "O template de aplicação {stack}/{template_name} é inválido: O template não é do tipo 'app-template'!" 
+STK_MESSAGE_BUSINESS_EXCEPTION_AUTHENTICATION_FAILED: "Autenticação falhou!"
+STK_MESSAGE_BUSINESS_EXCEPTION_CANT_CLONE_GIT_REPOSITORY: "Não foi possível clonar o \"{repo_url}\" repositório Git." 
+STK_MESSAGE_BUSINESS_EXCEPTION_CANT_RUN_COMMAND_DEPLOY_BECAUSE_TEMPLATE_DOESNT_SUPPORT: "Não foi possível executar o comando '{CLI_COMMAND_NAME} deploy' porque o {template_data_path} não suporta o {my_os}!"
+STK_MESSAGE_BUSINESS_EXCEPTION_CANT_RUN_COMMAND_DEPLOY_BECAUSE_THE_FOLLOWING_REQUIREMENTS_ARE_NOT_SATISFIED: "Não foi possível executar o comando '{CLI_COMMAND_NAME} deploy' porque os seguintes requisitos não foram satisfeitos: {error_details}."
+STK_MESSAGE_BUSINESS_EXCEPTION_CANT_RUN_COMMAND_DEPLOY_BECAUSE_THERE_IS_NO_APPLIED_PLUGINS: "Não foi possível executar o comando '{CLI_COMMAND_NAME} deploy' porque não há plugins aplicados com o comando deploy associado!"
+STK_MESSAGE_BUSINESS_EXCEPTION_CANT_RUN_COMMAND_DEPLOY_IN_A_DIRECTORY_WITHOUT_STK: "Não foi possível executar o comando '{CLI_COMMAND_NAME} deploy' em uma pasta sem o arquivo {{CLI_COMMAND_NAME}_history_file}!"
+STK_MESSAGE_BUSINESS_EXCEPTION_CANT_RUN_COMMAND_DEPLOY_ON_DETECTED_SYSTEM: "Não foi possível executar o comando '{CLI_COMMAND_NAME} deploy' no {detected_system}!"
+STK_MESSAGE_BUSINESS_EXCEPTION_CANT_RUN_TASK_BECAUSE_IT_DOESNT_SUPPORT_SYSTEM: "Não foi possível executar o comando '{CLI_COMMAND_NAME} task' porque o comando não suporta o {my_os}!"
+STK_MESSAGE_BUSINESS_EXCEPTION_CANT_RUN_TASK_BECAUSE_THE_FOLLOWING_REQUIREMENTS_ARE_NOT_SATISFIED: "Não foi possível executar o comando '{CLI_COMMAND_NAME} task' porque os seguintes requisitos não foram satisfeitos: {error_details}."
+STK_MESSAGE_BUSINESS_EXCEPTION_CANT_RUN_TASK_ON_SYSTEM: "Não foi possível executar o comando '{CLI_COMMAND_NAME} task' no {detected_system}!"
+STK_MESSAGE_BUSINESS_EXCEPTION_COULDNT_RETRIEVE_ACTION_NAME: "Não foi possível recuperar a action: {name}."
+STK_MESSAGE_BUSINESS_EXCEPTION_COULDNT_RETRIEVE_ACTIONS_FOR_YOUR_ORGANIZATION: "Não foi possível recuperar as actions para a sua organização."
+STK_MESSAGE_BUSINESS_EXCEPTION_COULDNT_RUN_THE_ACTION: "Não foi possível executar a action: {action_name}."
+STK_MESSAGE_BUSINESS_EXCEPTION_CURRENT_DIR_IS_NOT_A_STACK_FOLDER: "O diretório atual não é a pasta de uma stack."
+STK_MESSAGE_BUSINESS_EXCEPTION_DIRECTORY_NAMED_ALREADY_EXIST_IN_THIS_STACK: "O diretório com o nome {path} já existe nessa stack. Remova-o antes de prosseguir."
+STK_MESSAGE_BUSINESS_EXCEPTION_EMAIL_IS_AN_INVALID_EMAIL: "O {input_email} não é um e-mail válido. Por favor, informe um e-mail válido."
+STK_MESSAGE_BUSINESS_EXCEPTION_ENV_URL_DOES_NOT_EXISTS_ON_STACK_YAML_FILE: "A url de ambiente não existe no arquivo {{CLI_COMMAND_NAME}_history_file}."
+STK_MESSAGE_BUSINESS_EXCEPTION_ENVIRONMENT_TEMPLATE_DOESNT_EXIST_USE_LIST_TEMPLATE: "O template de ambiente {template_path} não existe!\nUse o comando '{CLI_COMMAND_NAME} list template --env' para listar os templates de ambiente disponíveis."
+STK_MESSAGE_BUSINESS_EXCEPTION_ENVIRONMENT_TEMPLATE_IN_PATH_IS_INVALID: "O template de ambiente em {template_path} é inválido: O template não é do tipo 'env-template'!"
+STK_MESSAGE_BUSINESS_EXCEPTION_ENVIRONMENT_TEMPLATE_STACK_NAME_TEMPLATE_NAME_DOESNT_EXIST: "O template de ambiente {stack}/{template_name} não existe!\nUse o comando '{CLI_COMMAND_NAME} list template --env' para listar os templates de ambiente disponíveis."
+STK_MESSAGE_BUSINESS_EXCEPTION_ENVIRONMENT_TEMPLATE_STACK_NAME_TEMPLATE_NAME_IS_INVALID: "O template de ambiente {stack}/{template_name} é inválido: O template não é do tipo 'env-template'!"
+STK_MESSAGE_BUSINESS_EXCEPTION_ERROR_EXECUTING_DEPLOY_COMMANDS_FOR_PLUGIN: "Erro ao executar comandos de deploy para o plugin {template_data_path}!"
+STK_MESSAGE_BUSINESS_EXCEPTION_ERROR_EXECUTING_TEST_CASE_ERROR_DETAIL: |
+  {FORE_RED}Erro [{current_index} de {error_count}] no arquivo: {yaml_name}{STYLE_RESET_ALL}
+      Detalhe do erro: "{details}"
+      Campo: "{field}"
+      Valor: "{value}"
+STK_MESSAGE_BUSINESS_EXCEPTION_ERROR_OCCURRED_WHILE_ADDING_ENTITY_TO_STACK: "Ocorreu um erro ao adicionar {entity} à stack:"
+STK_MESSAGE_BUSINESS_EXCEPTION_FILE_NAME_ALREADY_EXISTS_IN_DIRECTORY: "O arquivo {name} já existe no diretório."
+STK_MESSAGE_BUSINESS_EXCEPTION_INVALID_ENV_URL_PROVIDED: "'env-url' inválida informada, ela deve apontar para um repositório Git com o conteúdo criado pelo comando '{CLI_COMMAND_NAME} create env'."
+STK_MESSAGE_BUSINESS_EXCEPTION_INVALID_PLUGIN_NAME_THE_EXPECTED_FORMAT_IS: "Nome de plugin inválido, o formato esperado é '[<stack-name>/]<plugin-name>'!"
+STK_MESSAGE_BUSINESS_EXCEPTION_INVALID_STACK: "{FORE_RED}Inválida stack '{stack}', ajuste os erros listados abaixo e tente novamente:{STYLE_RESET_ALL}\n{errors}"
+STK_MESSAGE_BUSINESS_EXCEPTION_INVALID_STACKFILE_IS_NOT_OF_TYPE_EXPECTED: "Stackfile inválido: o stackfile não é do tipo '{expected_type}'."
+STK_MESSAGE_BUSINESS_EXCEPTION_INVALID_STACKFILE_TYPE_IS_REQUIRED: "Stackfile inválido: o tipo do stackfile é requerido."
+STK_MESSAGE_BUSINESS_EXCEPTION_INVALID_STAGE_PLEASE_PROVIDE_ONE_OF_FOLLOWING_STAGES: "Estágio inválido! Por favor, informe um dos seguintes estágios: {stages_joined}."
+STK_MESSAGE_BUSINESS_EXCEPTION_INVALID_STAGES_OPTION_VALUE: "Valor da opção 'stages' inválido. Ele deve seguir o formato: <name>:<aws-account-number>:<aws-region>[,<name>:<aws-account-number>:<aws-region>]*."
+STK_MESSAGE_BUSINESS_EXCEPTION_IS_NOT_A_VALID_NAME_FOR_A_INFO_NAME_IN_COMMAND: "O {name} não é um nome válido para um {info_name} no comando '{command_path}'. O nome deve começar e terminar com letras ou números, pode conter apenas letras, números e os caracteres especiais: hífen '-', sublinhado '_' e ponto '.'. Exemplo valid-Name_123.abc."
+STK_MESSAGE_BUSINESS_EXCEPTION_LOGIN_WITH_CLIENT_ID_AND_CLIENT_KEY_IS_REQUIRED_TO_USE_STK_CLI_IN_CI_CD_PIPELINE: "Login com uma ID do cliente. A chave do cliente é requerida para usar o STK CLI em uma pipeline CI/CD."
+STK_MESSAGE_BUSINESS_EXCEPTION_MUST_RUN_INSIDE_A_STACK_FOLDER: "Isso deve ser executado dentro da pasta de uma stack."
+STK_MESSAGE_BUSINESS_EXCEPTION_NAME_FOLDER_ALREADY_EXISTS_AND_IS_NOT_EMPTY: "A pasta {name} já existe e não está vazia."
+STK_MESSAGE_BUSINESS_EXCEPTION_NAME_FOLDER_ALREADY_EXISTS: "A pasta {name} já existe!"
+STK_MESSAGE_BUSINESS_EXCEPTION_NO_STACK_CONTAINING_TEMPLATES_FOUND_DOC_URL: "Nenhuma stack contendo templates foi encontrada. {DOC_MSG_URL}"
+STK_MESSAGE_BUSINESS_EXCEPTION_OPERATION_CANCELLED_BY_USER: "Operação cancelada pelo usuário."
+STK_MESSAGE_BUSINESS_EXCEPTION_PLUGIN_APPLICATION_CANCELED_BY_USER: "A aplicação do plugin foi cancelada pelo usuário."
+STK_MESSAGE_BUSINESS_EXCEPTION_PLUGIN_CHILDREN_PRESENT_IN_THE_PLUGIN_REQUIREMENTS: "O plugin {children_name} nos requisitos do plugin não foi encontrado na stack {stack}.\n> Por favor considere importá-lo usando o comando {CLI_COMMAND_NAME} import stack <URL-TO-{stack}>.\n> Ou atualize a sua stack com o comando {CLI_COMMAND_NAME} update stack {stack}."
+STK_MESSAGE_BUSINESS_EXCEPTION_PLUGIN_NOT_FOUND_STACK_NAME: "O plugin não foi encontrado: {stack}/{plugin}!"
+STK_MESSAGE_BUSINESS_EXCEPTION_PLUGIN_NOT_FOUND_TEMPLATE_DATA_PATH: "O plugin não foi encontrado: {template_data_path}!"
+STK_MESSAGE_BUSINESS_EXCEPTION_PLUGIN_NOT_FOUND_TEMPLATE_PATH: "O plugin não foi encontrado em {template_path}!"
+STK_MESSAGE_BUSINESS_EXCEPTION_REMOTE_OPTION_CANT_BE_USED_WHEN_CREATE_INSIDE_STACK_FOLDER: "A opção --remote não pode ser usada quando o comando '{CLI_COMMAND_NAME} create {entity}' é executado dentro da pasta da stack."
+STK_MESSAGE_BUSINESS_EXCEPTION_REMOTE_OPTION_IS_REQUIRED_WHEN_NAME_ARGUMENT_IS_NOT_PROVIDED: "A opção 'remote' é requerida quando o argumento 'NAME' não é informado."
+STK_MESSAGE_BUSINESS_EXCEPTION_REQUIREMENT_CHECKS_WAS_NOT_SATISFIED: "O {requirement_check} não foi satisfeito."
+STK_MESSAGE_BUSINESS_EXCEPTION_SESSION_EXPIRED_PLEASE_LOGIN_USING_THE_STK_LOGIN_COMMAND_LINE: "Sessão expirada. Por favor, faça o login pelo terminal com o comando \"{CLI_COMMAND_NAME} login\"."
+STK_MESSAGE_BUSINESS_EXCEPTION_STACK_NAME_CANT_BE_REMOVED_EXCEPTION_MESSAGE: "A stack {stack_name} não pode ser removida.\n{e}."
+STK_MESSAGE_BUSINESS_EXCEPTION_STACK_NAME_NOT_FOUND: "A stack {stack_name} não foi encontrada!"
+STK_MESSAGE_BUSINESS_EXCEPTION_STACK_SHOULD_BE_IMPORTED: "A stack {stack_name} deve ser importada antes!"
+STK_MESSAGE_BUSINESS_EXCEPTION_STACK_NOT_FOUND_USE_LIST_STACKS: "A stack {stack} não foi encontrada.\nUse o comando '{CLI_COMMAND_NAME} list stack' para listar as stacks disponíveis."
+STK_MESSAGE_BUSINESS_EXCEPTION_STACKFILE_DOESNT_EXIST_USE_COMMAND_NAME_LIST_STACKFILE_TO_LIST_AVAILABLE_STACKFILES: "O stackfile {stackfile} não existe!\nUse o comando '{CLI_COMMAND_NAME} list stackfile' para listar os stackfiles disponíveis."
+STK_MESSAGE_BUSINESS_EXCEPTION_STACKFILE_DOESNT_EXIST_USE_LIST_STACKFILE: "O stackfile {stackfile} não existe!\nUse o comando '{CLI_COMMAND_NAME} list stackfile' para listar os stackfiles disponíveis."
+STK_MESSAGE_BUSINESS_EXCEPTION_STACKFILE_DOESNT_SUPPORT_PLUGINS_FROM_ANOTHER_STACK: "O stackfile não oferece suporte para plugins de outra stack."
+STK_MESSAGE_BUSINESS_EXCEPTION_STACKFILE_FILE_IS_INVALID: "O stackfile {stackfile} é inválido."
+STK_MESSAGE_BUSINESS_EXCEPTION_STACKFILE_STACK_STACKFILE_NOT_FOUND: "O stackfile {stack}/{stackfile_name} não foi encontrado."
+STK_MESSAGE_BUSINESS_EXCEPTION_STATUS_CODE_EXPLANATION: "Código de Status: {status_code}, Explicação: {explanation}."
+STK_MESSAGE_BUSINESS_EXCEPTION_STK_FILE_NOT_FOUND: "O arquivo {{CLI_COMMAND_NAME}_history_file} não foi encontrado."
+STK_MESSAGE_BUSINESS_EXCEPTION_TASK_FILE_NOT_FOUND_AT_PATH: "O arquivo da task não foi encontrado em: {yaml_path}."
+STK_MESSAGE_BUSINESS_EXCEPTION_TASK_FINISHED_WITH_ERRORS_STATUS_CODE: "A task encerrou com erro(s), código de status: {status_code}."
+STK_MESSAGE_BUSINESS_EXCEPTION_TASK_NAME_ALREADY_EXISTS: "A task {name} já existe."
+STK_MESSAGE_BUSINESS_EXCEPTION_TASK_WITH_NAME_WAS_NOT_FOUND: "A task com o nome: {name} não foi encontrada."
+STK_MESSAGE_BUSINESS_EXCEPTION_THE_CURRENT_PROJECT_DOESNT_MEET_THE_NECESSARY_REQUIREMENTS_TO_APPLY_TO_PLUGIN: "O projeto atual não atende aos requisitos para aplicar o plugin: {definition_name}\nPor favor, considere aplicar primeiro o seguinte template / plugins:\n{missing_requirements}\n\n> Você pode criar uma aplicação usando um template com o comando: '{CLI_COMMAND_NAME} create app <APP_NAME> <STACK_NAME>/<TEMPLATE_NAME>'\n> Você pode aplicar os plugins pendentes usando o comando: '{CLI_COMMAND_NAME} apply plugin <STACK_NAME>/<PLUGIN_NAME>'\n."
+STK_MESSAGE_BUSINESS_EXCEPTION_THE_FOLLOWING_REQUIREMENTS_ARE_INVALID: "Os seguintes requisitos são inválidos:\n{invalid_requirements_text}}\no campo 'requirements' deve seguir o seguinte padrão <STACK_NAME>/<TEMPLATE_NAME> ou <STACK_NAME>/<PLUGIN_NAME>."
+STK_MESSAGE_BUSINESS_EXCEPTION_THE_PROVIDED_URL_DOESNT_CONTAIN_A_VALID_STACK_MISSING_NAME_ATTRIBUTE_IN_STACK_YAML: "A URL informada não contém uma stack válida: Falta o atributo 'name' no arquivo 'stack.yaml'!"
+STK_MESSAGE_BUSINESS_EXCEPTION_THE_PROVIDED_URL_DOESNT_CONTAIN_A_VALID_STACK_MISSING_STACK_YAML: "A URL informada não contém uma stack válida: Falta o arquivo 'stack.yaml'!"
+STK_MESSAGE_BUSINESS_EXCEPTION_THIS_PLUGIN_CANNOT_BE_APPLIED_TO_AN_TYPE_STACK: "Esse plugin não pode ser aplicado em uma stack do tipo {stack_type}!"
+STK_MESSAGE_BUSINESS_EXCEPTION_TYPE_NAME_CANT_BE_REMOVE_EXCEPTION_MESSAGE: "O {type} {name} não pode ser removido.\n{e}."
+STK_MESSAGE_BUSINESS_EXCEPTION_TYPE_NAME_NOT_FOUND: "O {type} {name} não foi encontrado."
+STK_MESSAGE_BUSINESS_EXCEPTION_URL_IS_NOT_A_VALID_GIT_URL_OR_YOU_DONT_HAVE_PERMISSION: "A {url} não é uma URL Git válida, ou você não tem permissão para cloná-la."
+STK_MESSAGE_BUSINESS_EXCEPTION_URL_IS_NOT_A_VALID_GIT_URL: "A {url} não é uma URL Git válida."
+STK_MESSAGE_BUSINESS_EXCEPTION_VALUE_IS_AN_INVALID_VALUE_FOR_OPTION: "O '{value_item}' é um valor inválido para a opção '{kebab_name}'! Os valores válidos são: {items}."
+STK_MESSAGE_BUSINESS_EXCEPTION_VERIFY_COMPONENT_NAME_ALREADY_EXISTS_IN_STACK: "Uma {entity} com o nome {otd_name} já existe nessa stack na pasta {dir_name}. Remova-o antes de prosseguir."
+STK_MESSAGE_CLICK_USAGE_ERROR_ENV_URL_AND_STAGES_OPTIONS_CANNOT_BE_USED_TOGETHER: "As opções 'env-url' e 'stages' não podem ser usadas juntas."
+STK_MESSAGE_CLICK_USAGE_ERROR_NAME_OR_PLUGIN_PATH_OPTIONS_MUST_BE_PROVIDED_TO_EXECUTE_APPLY_PLUGIN: "As opções 'name' e 'plugin-path' devem ser fornecidas para executar o comando '{CLI_COMMAND_NAME} apply plugin'."
+STK_MESSAGE_CLICK_USAGE_ERROR_NAME_OR_TASK_PATH_OPTIONS_MUST_BE_PROVIDED_TO_EXECUTE_RUN: "As opções 'name' e 'task-path' devem ser fornecidas para executar o comando '{CLI_COMMAND_NAME} run'."
+STK_MESSAGE_CLICK_USAGE_ERROR_REMOTE_OPTION_IS_REQUIRED_WHEN_NAME_ARGUMENT_IS_NOT_PROVIDED: "A opção 'remote' é requerida quando o argumento 'NAME' não é informado."
+STK_MESSAGE_CLICK_USAGE_ERROR_TEMPLATE_IS_INVALID_EXPECTED_STACK_TEMPLATE: "O {template} é inválido, é esperado uma stack/template."
+STK_MESSAGE_CLICK_USAGE_ERROR_TEMPLATE_TEMPLATE_PATH_OR_STACKFILE_CANNOT_BE_USED_TOGETHER: "As opções 'template', 'template-path' ou 'stackfile' não podem ser usadas juntas."
+STK_MESSAGE_CLICK_USAGE_ERROR_TEMPLATE_TEMPLATE_PATH_STACKFILE_OPTIONS_MUST_BE_PROVIDED_TO_EXECUTE_CREATE: "As opções 'template', 'template-path' ou 'stackfile' devem ser fornecidas para executar o comando '{CLI_COMMAND_NAME} create {entity}'."
+STK_MESSAGE_PRETTY_TABLE_IGNORED_FILES_OF_FILE_TO_IGNORE: "Arquivos ignorados do '{file_to_ignore}'"
+STK_MESSAGE_PRETTY_TABLE_FILES_TO_VALIDATE: "Arquivos para validar"
+STK_MESSAGE_OUTPUT_ECHO_ENTITY_NAME_WITH_TEST_CASE_NAME_WITH_CASE_RESULT_SUMMARY: "{FORE_RED}{entity_name_with_test_case_name}: {STYLE_RESET_ALL}{case_result_summary}"
+STK_MESSAGE_OUTPUT_ECHO_FAILED_TESTS: "\n\n{FORE_RED}TESTES FALHADOS:{STYLE_RESET_ALL}"
+STK_MESSAGE_OUTPUT_ECHO_DETAIL_ENTITY_OF_CASE_CASE_RESULT_DETAIL: "Detalhe: {case_result_detail}\n"
+STK_MESSAGE_OUTPUT_ECHO_HOW_TO_TEST_PLUGIN_MESSAGE: |
+  Para testar o {entity} criado, você pode criar uma aplicação usando o commando {CLI_COMMAND_NAME} apply plugin com a opção -p.
+  Exemplo:
+      {CLI_COMMAND_NAME} apply plugin -p {complete_path}
+STK_MESSAGE_OUTPUT_ECHO_HOW_TO_TEST_TEMPLATE_MESSAGE: |
+  Para testar o {entity} criado, você pode criar uma aplicação usando a opção -p.
+  Exemplo:
+      {CLI_COMMAND_NAME} create app test-app -p {complete_path}
+STK_MESSAGE_OUTPUT_ECHO_NOW_YOU_CAN_CREATE_TEMPLATES_OR_PLUGINS_TO_THE_STACK_USING: "\nAgora, você pode criar templates ou plugins para a sua stack usando os comandos '{CLI_COMMAND_NAME} create template' ou '{CLI_COMMAND_NAME} create plugin' dentro da pasta da stack criada.\nVocê pode criar templates ou plugins em seus próprios repositórios Git, e adicioná-los à stack usando os comandos '{CLI_COMMAND_NAME} add template' '{CLI_COMMAND_NAME} add plugin' dentro da pasta da stack criada.\nEsta segunda opção pode ser usada quando você quer compartilhar templates e plugins entre stacks."
+STK_MESSAGE_OUTPUT_ECHO_NOW_YOU_CAN_EXECUTE_GIT_PUSH_TO_PUBLISH_THE_ENTITY: "{os_linesep}Agora você pode executar o comando 'git push' para publicar o {entity} adicionado ao repositório remoto da stack."
+STK_MESSAGE_OUTPUT_ECHO_ORGANIZATION_NAME: "Organização: {name}"
+STK_MESSAGE_OUTPUT_ECHO_SOME_REQUIREMENTS_TO_RUN_CLI_COMMAND_NAME_CLI_ARE_NOT_SATISFIED_GIT: |
+  "Alguns requisitos para executar o {CLI_COMMAND_NAME} STK CLI não foram satisfeitos."
+
+  Por favor, instale as seguintes ferramentas antes de usar o {CLI_COMMAND_NAME} STK CLI:
+  - git 2.15+
+STK_MESSAGE_OUTPUT_ECHO_STACK_NAME: "Stack: {name}"
+STK_MESSAGE_OUTPUT_ECHO_TEST_FAILED_DETAIL_LINE_NUMBER_EXPECTED_TEXT_FOUND_TEXT: "\nLinha: {line_number}\nTexto esperado:  {file_expected_line_representation}\nTexto encontrado: {file_test_line_representation}"
+STK_MESSAGE_OUTPUT_ECHO_TEST_FAILED_DETAIL_TEST_CASE_CODE_GENERATE_FILE_THAT_SHOULD_NOT_EXIST_WITH_THE_TYPE_APPLIED: "Pasta esperada não contém este arquivo '{file_name}' em '{expected_file_path}'."
+STK_MESSAGE_OUTPUT_ECHO_TEST_FAILED_DETAIL_TEST_CASE_EXPECT_FILE_BUT_DOENST_EXIST_WITH_THE_TYPE_APPLIED: "O aplicado {type_normalized} deve gerar este arquivo."
+STK_MESSAGE_OUTPUT_ECHO_TEST_FAILED_SUMMARY_CONTENT_OF_FILE_RELATIVE_PATH_IS_NOT_THE_SAME_WITH_THE_TYPE_APPLIED: "O conteúdo do arquivo '{relative_path}' não é o mesmo com o {type_normalized} aplicado"
+STK_MESSAGE_OUTPUT_ECHO_TEST_FAILED_SUMMARY_TEST_CASE_CODE_GENERATE_FILE_THAT_SHOULD_NOT_EXIST_WITH_THE_TYPE_APPLIED: "Caso de teste gerou o arquivo {relative_path} que não deveria existir."
+STK_MESSAGE_OUTPUT_ECHO_TEST_FAILED_SUMMARY_TEST_CASE_EXPECT_FILE_BUT_DOENST_EXIST_WITH_THE_TYPE_APPLIED: "Caso de teste esperava o arquivo {relative_path}, porém o mesmo não foi gerado."
+STK_MESSAGE_OUTPUT_ECHO_TEST_FAILED_SUMMARY_TEST_FAILED_ON_APPLYING_PLUGIN_WITH_PLUGIN_NAME: "Teste falhou durante a aplicação do plugin com o plugin '{plugin_name}'."
+STK_MESSAGE_OUTPUT_ECHO_TEST_FAILED_SUMMARY_TEST_FAILED_ON_CREATE_APPLICATION_WITH_TEMPLATE_TEMPLATE_NAME: "Teste falhou durante a criação da aplicação utilizando o template '{stack_name_plugin_name}'."
+STK_MESSAGE_OUTPUT_ECHO_TEST_FAILED: "FALHOU"
+STK_MESSAGE_OUTPUT_ECHO_TEST_PASSED: "PASSOU"
+STK_MESSAGE_OUTPUT_ERROR_AN_ERROR_OCCURRED_WHILE_CHECKING_THE_TOKEN: "Ocorreu um erro ao checar o token."
+STK_MESSAGE_OUTPUT_ERROR_COULDNT_CREATE_SESSION_FILE_AT_SESSION_FILE: "Não foi possível criar o arquivo da sessão em {session_file}."
+STK_MESSAGE_OUTPUT_ERROR_COULDNT_IDENTIFY_STACK_SPOT_USER: "Não foi possível identificar o usuário da StackSpot."
+STK_MESSAGE_OUTPUT_ERROR_COULDNT_RENEW_SESSION_TOKENS: "Não foi possível renovar os tokens da sessão."
+STK_MESSAGE_OUTPUT_ERROR_COULDNT_RETRIEVE_ACCOUNT_TOKEN: "Não foi possível recuperar o token da conta."
+STK_MESSAGE_OUTPUT_ERROR_COULDNT_RETRIEVE_SESSION_TOKEN: "Não foi possível recuperar os tokens da sessão."
+STK_MESSAGE_OUTPUT_ERROR_COULDNT_RETRIEVE_SESSION_TOKEN_MAX_RETRIES_ATTEMPTS: "Não foi possível identificar a confirmação do login no navegador. Tente novamente."
+STK_MESSAGE_OUTPUT_ERROR_CURRENT_EMAIL_AND_SSO_MISMATCH: "O email '{current_email}' atual não corresponde ao email SSO '{sso_email}'."
+STK_MESSAGE_OUTPUT_ERROR_FOLDER_ALREADY_EXISTS_AND_IS_NOT_EMPTY: "A pasta {name} já existe e não está vazia."
+STK_MESSAGE_OUTPUT_ERROR_GIT_IS_INSTALLED_BUT_VERSION_IS_NOT_SUPPORTED: "O Git está instalado, mas a versão {version} não é suportada!"
+STK_MESSAGE_OUTPUT_ERROR_GIT_IS_NOT_INSTALLED: "O Git não está instalado!"
+STK_MESSAGE_OUTPUT_ERROR_INVALID_CHARACTER_ENCODING_FOR_FILE_FILE_PATH_ENCODING_MUST_BE_UTF_8: "Codificação de caractere inválida para o arquivo {file_path}. A codificação deve ser a UTF-8."
+STK_MESSAGE_OUTPUT_ERROR_INVALID_YAML_FILE_YAML_FILE_PATH: "Arquivo yaml inválido: {yaml_file_path}."
+STK_MESSAGE_OUTPUT_ERROR_INVALID_JSON_FILE_JSON_FILE_PATH: "Arquivo json inválido: {json_file_path}."
+STK_MESSAGE_OUTPUT_ERROR_NO_TESTS_FOUND_WITH_ENTITY_OF_TEST: "Nenhum teste encontrado com {entity_of_test}"
+STK_MESSAGE_OUTPUT_ERROR_NO_TESTS_FOUND: "Nenhum teste encontrado"
+STK_MESSAGE_OUTPUT_ERROR_NO_TEST_FOUND_WITH_ENTITY_OF_TEST_NAME_WITH_TEST_CASE_NAME: "Nenhum teste encontrado com {entity_of_test_name_with_test_case_name}"
+STK_MESSAGE_OUTPUT_ERROR_PLEASE_CHECK_THE_EMAIL_FORMAT_OR_CREATE_YOUR_ACCOUNT_ON_LOGIN_URL: "Por favor, confira o formato do e-mail, ou crie uma conta em {LOGIN_URL}."
+STK_MESSAGE_OUTPUT_ERROR_THE_PROVIDED_INPUTS_WILL_BE_DISREGARDED: "Os inputs fonecidos serão desconsiderados."
+STK_MESSAGE_OUTPUT_ERROR_THE_USE_OF_FLAG_INPUTS_WHEN_APPLYING_MORE_THAN_ONE_PLUGIN_AT_ONCE_IS_NOT_ALLOWED: "O uso de flags nos inputs ao aplicar mais de um plugin ao mesmo tempo não é permitida."
+STK_MESSAGE_OUTPUT_ERROR_TO_RUN_TESTS_OF_TYPE_USE_COMMAND: "Para executar testes do tipo '{type}' utilize '{CLI_COMMAND_NAME} test {type} {entity_of_test_name_with_test_case_name}'"
+STK_MESSAGE_OUTPUT_ERROR_YOUR_GIT_IS_NOT_CONFIGURED_PLEASE_INPUT_YOUR_CREDENTIAL_TYPE: "O seu Git não está configurado, por favor insira as suas credenciais {credential_type}."
+STK_MESSAGE_OUTPUT_INFO_ACTION_RESPONSE: "Resposta da action:"
+STK_MESSAGE_OUTPUT_INFO_ADDING_REPO_URL_ENTITY_TO_STACK: "Adicionando o \"{repo_url}\" à stack..."
+STK_MESSAGE_OUTPUT_INFO_APPLYING_PLUGIN: "Aplicando o plugin {name}."
+STK_MESSAGE_OUTPUT_INFO_COMMAND_CLI_COMMAND_NAME_DEPLOY_WILL_NOT_SUPPORTED_IN_FUTURE_VERSIONS: "O comando '{CLI_COMMAND_NAME} deploy' não será mais suportado em versões futuras."
+STK_MESSAGE_OUTPUT_INFO_CREATING_CONTAINER_FROM_IMAGE_TASK_CONTAINER_IMAGE: "Criando o container a partir da imagem: {task_container_image}."
+STK_MESSAGE_OUTPUT_INFO_CREATING_STACK_NAME: "Criando a stack {name}..."
+STK_MESSAGE_OUTPUT_INFO_EXECUTING_DEPLOY: "Executando o deploy..."
+STK_MESSAGE_OUTPUT_INFO_EXECUTING_TASK_TASK_NAME: "Executando a task {task_name}..."
+STK_MESSAGE_OUTPUT_INFO_INITIALIZING_CLI: "Inicializando o {CLI_COMMAND_NAME} cli..."
+STK_MESSAGE_OUTPUT_INFO_LOGIN_IS_EXPIRED: "O login expirou."
+STK_MESSAGE_OUTPUT_INFO_LOGIN_IS_REQUIRED: "É necessário fazer o login."
+STK_MESSAGE_OUTPUT_INFO_NO_ACTIONS_FOUND_IN_YOUR_ORGANIZATION: "Nenhuma action foi encontrada em sua organização."
+STK_MESSAGE_OUTPUT_INFO_NO_ADDITIONAL_PLUGINS_FOUND_FOR_STACK_STACK_NAME: "Nenhum plugin adicional foi encontrado para a stack {stack.}"
+STK_MESSAGE_OUTPUT_INFO_NO_ENTITY_FOUND_SE_DOCS_OR_CREATE_A_ENTITY_FOLLOWING_URL: "Nenhum {entity_plural} encontrado\n{DOC_MSG_URL}\nOu crie uma {entity_singular} conforme {url}."
+STK_MESSAGE_OUTPUT_INFO_NO_FILES_WAS_FOUND_THAT_MATCH_THE_PATTERNS_DEFINED_IN_THE_FILE_TO_IGNORE: "Nenhum arquivo encontrado que corresponda aos padrões definidos no arquivo '{file_to_ignore}'"
+STK_MESSAGE_OUTPUT_INFO_NOW_YOU_CAN_RUN_GIT_PUSH_COMMAND_TO_REMOVE_REMOTE_REPOSITORY: "Agora, você pode executar o comando git push para remover efetivamente o repositório remoto."
+STK_MESSAGE_OUTPUT_INFO_OUTPUT: "resultado"
+STK_MESSAGE_OUTPUT_INFO_PLEASE_CONSIDER_MIGRATING_TO_CLI_COMMAND_NAME_TO_RUN_TASK: "Por favor, considere migrar para o comando '{CLI_COMMAND_NAME} run task'."
+STK_MESSAGE_OUTPUT_INFO_PLUGIN_PLUGIN_NAME_WILL_NOT_BE_APPLIED: "O plugin {plugin_name} não será aplicado."
+STK_MESSAGE_OUTPUT_INFO_RUNNING_TESTS: "EXECUTANDO TESTES: "
+STK_MESSAGE_OUTPUT_INFO_SOME_REQUIREMENTS_ARE_NOT_MET_YOU_NEED_TO_APPLY_THE_FOLLOWING_PLUGINS_BEFORE: "O plugin \"{plugin}\" depende dos seguintes plugins:"
+STK_MESSAGE_OUTPUT_INFO_THERE_IS_NO_ACTIVE_SESSION: "Não há uma sessão ativa."
+STK_MESSAGE_OUTPUT_INFO_VALIDATING_STACK: "Validando stack"
+STK_MESSAGE_OUTPUT_INFO_VALIDATED_STACK_SUCCESSFULLY: "{FORE_LIGHTGREEN_EX}Validado stack '{stack}' com sucesso{STYLE_RESET_ALL}"
+STK_MESSAGE_OUTPUT_INFO_VERIFYING_GIT_REPOSITORY: "Verificando o repositório Git \"{repo_url}\" {entity}..."
+STK_MESSAGE_OUTPUT_INFO_VERIFYING_TASK_REQUIREMENTS: "Verificando os requisitos da task..."
+STK_MESSAGE_OUTPUT_INFO_WAITING_FOR_USER_APPROVAL_ON_BROWSER_COUNT: "Aguardando aprovação do usuário no navegador... ({count})."
+STK_MESSAGE_OUTPUT_INFO_WARNING_THE_STACK_SELECTED_STACK_IS_DIFFERENT_THANT_THE_STACK_USED_TO_CREATE_THIS_PROJECT: "AVISO: A stack {selected_stack} é diferente da stack usada para criar este projeto: stack {original_stack}! Alguns plugins podem não funcionar em projetos criados por templates de outras stacks. Apenas use esta stack se você tem certeza se ela é compatível com o projeto."
+STK_MESSAGE_OUTPUT_INFO_WARNING_THE_PLUGIN_IS_FROM_STACK_AND_THIS_PROJECT_WAS_CREATED_WITH_ANOTHER_STACK: "AVISO: O plugin {name} é da stack {stack} e este projeto foi criado com um template da stack {history_stack}! Alguns plugins podem não funcionar em projetos criados por templates de outras stacks. Apenas aplique esse plugin se você tem certeza que ele é compatível com o projeto."
+STK_MESSAGE_OUTPUT_PRINT_RENAME_TRIES: "Tentativa de renomear: {tries}!"
+STK_MESSAGE_OUTPUT_PRINT_DIGEST_IMAGE: "Digestão da imagem: {image_id}\n"
+STK_MESSAGE_OUTPUT_PRINT_TO_LEARN_MORE_ABOUT_THE_VERSION_VERSION_CHECK_THE_RELEASE_NOTES_AT_URL: "Para aprender mais sobre a versão {__version__}, confira o Release Notes em: \n{RELEASE_NOTES_URL}."
+STK_MESSAGE_OUTPUT_SUCCESS_ACTION_CALLED_SUCCESSFULLY: "Acton executada com sucesso."
+STK_MESSAGE_OUTPUT_SUCCESS_ACTION_NAME_CALLED_WITH_STATUS: "Action {name} executada com o status: {response_status}."
+STK_MESSAGE_OUTPUT_SUCCESS_ACTION_NAME_WILL_OPEN_THE_FOLLOWING_URL: "A action {name} abrirá a seguinte URL: {response_url}."
+STK_MESSAGE_OUTPUT_SUCCESS_APP_SUCCESSFULLY_CREATED: "Aplicação {name} criada com sucesso!"
+STK_MESSAGE_OUTPUT_SUCCESS_CLI_SUCCESSFULLY_INITIALIZED: "{CLI_COMMAND_NAME} CLI inicializado com sucesso."
+STK_MESSAGE_OUTPUT_SUCCESS_DISABLE_SSL_CERTIFICATE_VERIFICATION_SET_TO: "Desative a verificação do certificado SSL definida como {disable_ssl_verify}!"
+STK_MESSAGE_OUTPUT_SUCCESS_ENTITY_NAME_SUCCESSFULLY_CREATED: "{entity} {name} criada com sucesso."
+STK_MESSAGE_OUTPUT_SUCCESS_ENTITY_REPOSITORY_IS_VALID: "O repositório {entity} é válido."
+STK_MESSAGE_OUTPUT_SUCCESS_ENVIRONMENT_NAME_SUCCESSFULLY_CREATED: "O ambiente {name} foi criado com sucesso!"
+STK_MESSAGE_OUTPUT_SUCCESS_ENVIRONMENT_UPDATED: "Ambiente atualizado!"
+STK_MESSAGE_OUTPUT_SUCCESS_FOLDER_NAME_FOLDER_CREATED: "Pasta {folder_name} criada!"
+STK_MESSAGE_OUTPUT_SUCCESS_IGNORED_FILES_SUCCESSFULLY_OF_FILE_TO_IGNORE: "Ignorado arquivos com sucesso do {file_to_ignore}"
+STK_MESSAGE_OUTPUT_SUCCESS_LOGIN_PERFORMED_SUCCESSFULLY: "Login realizado com sucesso!"
+STK_MESSAGE_OUTPUT_SUCCESS_LOGOUT_PERFORMED_SUCCESSFULLY: "Logout realizado com sucesso!"
+STK_MESSAGE_OUTPUT_SUCCESS_NAME_GIT_REPOSITORY_INITIALIZED_SUCCESSFULLY: "O repositório git {name} foi inicializado com sucesso!"
+STK_MESSAGE_OUTPUT_SUCCESS_OLDER_FOLDER_RENAMED_TO_NEW_FOLDER: "A pasta {old_folder_name} foi renomeada para {new_folder_name}."
+STK_MESSAGE_OUTPUT_SUCCESS_PLUGIN_NAME_APPLIED: "Plugin {plugin_name} aplicado."
+STK_MESSAGE_OUTPUT_SUCCESS_PROXY_EXCLUSIONS_EXCLUDED_FROM_PROXY_CONFIGURATION: "{proxy_exclusions} excluído das configurações de proxy."
+STK_MESSAGE_OUTPUT_SUCCESS_REMOTE_SUCCESSFULLY_ASSOCIATED_AS_ORIGIN_OF_STACK_REPOSITORY: "O {remote} foi associado como origem do repositório com sucesso!"
+STK_MESSAGE_OUTPUT_SUCCESS_REMOVED_EMPTY_FOLDERS_SUCCESSFULLY: "Removido pastas vazias com sucesso"
+STK_MESSAGE_OUTPUT_SUCCESS_REPOSITORY_ADDED_TO_STACK: "O \"{repo_url}\" foi adicionado à stack."
+STK_MESSAGE_OUTPUT_SUCCESS_STACK_CREATED_SUCCESSFULLY:  "A stack {name} foi criada com sucesso!"
+STK_MESSAGE_OUTPUT_SUCCESS_STACK_STACK_NAME_REMOVED_FROM_PATH_STACK_PATH: "A stack {stack_name} foi removida do caminho {stack_path}."
+STK_MESSAGE_OUTPUT_SUCCESS_STACKFILE_NAME_SUCCESSFULLY_CREATED: "Stackfile {name} criado com sucesso."
+STK_MESSAGE_OUTPUT_SUCCESS_STACKSPOT_PROXY_SET_TO_PROXY: "Proxy StackSpot definido como {proxy}!"
+STK_MESSAGE_OUTPUT_SUCCESS_STAGES_ADDED_SUCCESSFULLY: "Estágios adicionados com sucesso."
+STK_MESSAGE_OUTPUT_SUCCESS_SUCCESSFULLY_ADDED_TO_STACK: "\"{otd_name}\" adicionado na stack com sucesso."
+STK_MESSAGE_OUTPUT_SUCCESS_TASK_NAME_SUCCESSFULLY_CREATED: "Task {name} criada com sucesso!"
+STK_MESSAGE_OUTPUT_SUCCESS_TYPE_NAME_DELETED_FROM_PATH: "O {type} {name} foi deletado do caminho {path}."
+STK_MESSAGE_OUTPUT_WARNING_TEST_IGNORED_DUE_TO_FILE_INPUT_YAML_DOESNT_EXIST: "'{entity_name_with_test_case_name}' ignorado devido ao arquivo 'inputs.yaml' não existir"
+STK_MESSAGE_OUTPUT_WARNING_TEST_IGNORED_DUE_TO_FOLDER_NAME_DOESNT_EXIST: "'{entity_name_with_test_case_name}' ignorado devido a pasta '{folder_name}' não existir"
+STK_MESSAGE_OUTPUT_WARNING_TEST_IGNORED_DUE_TO_FOLDER_NAME_IS_EMPTY: "'{entity_name_with_test_case_name}' ignorado devido a pasta '{folder_name}' estar vazia"
+STK_MESSAGE_OUTPUT_WARNING_TEST_IGNORED_DUE_TO_MISSED_FIELDS_ON_FILE_INPUT_YAML: "'{entity_name_with_test_case_name}' ignorado devido a campos que não informados [{fields}] no arquivo 'inputs.yaml'"
+STK_MESSAGE_QUESTIONARY_CHOICE_PLUGIN_DEPENDS_ON_REQUIREMENTS: "O {plugin} - Depende do: {requirements_plugin_name_only}."
+STK_MESSAGE_QUESTIONARY_CONFIRM_APPLY_PLUGIN_CURRENT_FOLDER_ISNT_STACKSPOT_PROJECT: "A pasta atual parece não pertencer a um projeto StackSpot. Você ainda quer aplicar o plugin?"
+STK_MESSAGE_QUESTIONARY_CONFIRM_APPLY_PLUGIN_ISNT_STACKSPOT_PROJECT_DO_YOU_WANT_TO_PROCEED: "Você quer prosseguir?"
+STK_MESSAGE_QUESTIONARY_CONFIRM_DO_YOU_WANT_TO_APPLY_PLUGINS: "Você quer aplicar plugins?"
+STK_MESSAGE_QUESTIONARY_CONFIRM_DO_YOU_WANT_TO_APPLY_THESE_PLUGINS: "Você quer aplicar estes plugins?"
+STK_MESSAGE_QUESTIONARY_CONFIRM_DO_YOU_WANT_TO_CREATE_ANYWAY: "Você quer criar isso de qualquer maneira?"
+STK_MESSAGE_QUESTIONARY_CONFIRM_THE_FOLLOWING_PLUGINS_NEED_TO_BE_APPLIED: "Os seguintes plugins precisam ser aplicados:"
+STK_MESSAGE_QUESTIONARY_SELECT_CHOOSE_THE_STACKFILE_TO_BE_USED: "Escolha o stackfile a ser usado:"
+STK_MESSAGE_QUESTIONARY_SELECT_CHOOSE_THE_TEMPLATE_TO_BE_USED: "Escolha o template a ser usado:"
+STK_MESSAGE_QUESTIONARY_SELECT_CREATE_APP_USING: "Crie o aplicativo usando:"
+STK_MESSAGE_QUESTIONARY_SELECT_SELECT_THE_STACK: "Seleciona a stack:"
+STK_MESSAGE_QUESTIONARY_SELECT_THERE_ARE_MORE_THAN_ONE_IMPORTED_TASK_WITH_NAME: "Há mais de uma task importada com o nome {nome}, qual delas você gostaria fosse executada:"
+STK_MESSAGE_QUESTIONARY_SPINNER_BUILDING_TAG_NAME: "Building da tag: {tag_name}"
+STK_MESSAGE_QUESTIONARY_SPINNER_IGNORING_FILES_OF_FILE_TO_IGNORE: "Ignorando arquivos do '{file_to_ignore}'"
+STK_MESSAGE_QUESTIONARY_SPINNER_PULLING_IMAGE_NAME: "Pulling da imagem: {name}."
+STK_MESSAGE_QUESTIONARY_SPINNER_REMOVING_EMPTY_FOLDERS: "Removendo pastas vazias"
+STK_MESSAGE_QUESTIONARY_SPINNER_UPDATING_ENVIRONMENT: "Atualizando o ambiente..."
+STK_MESSAGE_QUESTIONARY_SPINNER_VERIFYING_DEPLOY_REQUIREMENTS: "Verificando os requisitos do deploy..."
+STK_MESSAGE_QUESTIONARY_TEXT_INPUT_PLACEHOLDER_DESCRIPTION_DESCRIBE_YOUR_ENTITY_EXPLAINING_ITS_PURPOSE: "Descreva o seu {entity} explicando o seu propósito."
+STK_MESSAGE_QUESTIONARY_TEXT_INPUT_PLACEHOLDER_STAGES: "sandbox:12345:us-east-1,dev:54321:us-east-1"
+STK_MESSAGE_QUESTIONARY_TEXT_INPUT_QUESTION_DESCRIPTION: "Descrição"
+STK_MESSAGE_QUESTIONARY_TEXT_INPUT_QUESTION_STAGES: "Estágios"
+STK_MESSAGE_QUESTIONARY_TEXT_NAME_OF_YOUR_APPLICATION: "Nome da sua aplicação:"
+STK_MESSAGE_QUESTIONARY_VALIDATION_ERROR_TEXT_IS_NOT_A_VALID_EMAIL: "O {document_text} não é um e-mail válido."
+STK_MESSAGE_QUESTIONARY_VALIDATION_ERROR_TEXT_IS_NOT_A_VALID_NAME: "O '{document_text}'' não é um e-mail válido. O nome deve começar e terminar com letras ou números. Deve conter apenas letras, números e os caracteres especiais: hífen '-', sublinhado '_' e ponto '.' Exemplo: valid-Name_123.abc."
+STK_MESSAGE_QUEUE_INFO_DOWNLOADING_STACK_FROM_URL: "Fazendo o download da stack na url {stack_url}."
+STK_MESSAGE_QUEUE_INFO_STACK_STACK_NAME_ALREADY_EXISTS_UPDATING_IT: "A stack {stack_name} já existe. Atualizando..."
+STK_MESSAGE_QUEUE_INFO_UPDATING_STACK_NAME_STACK: "Atualizando a stack {stack_name}..."
+STK_MESSAGE_QUEUE_SUCCESS_STACK_ADDED_AND_READY_FOR_USE: "Stack adicionada e pronta para uso!"
+STK_MESSAGE_QUEUE_SUCCESS_STACK_DOWNLOADED_SUCCESSFULLY: "Download da stack concluído com sucesso!"
+STK_MESSAGE_QUEUE_SUCCESS_STACK_IS_VALID: "A stack é válida!"
+STK_MESSAGE_QUEUE_SUCCESS_STACK_NAME_STACK_SUCCESSFULLY_UPDATED: "A stack {stack_name} foi atualizada com sucesso!"
+STK_MESSAGE_QUEUE_SUCCESS_STACK_STACK_NAME_UPDATED: "Stack {stack_name} atualizada!"
+STK_MESSAGE_QUEUE_SUCCESS_VERIFYING_STACK_CONTENT: "Verificando o conteúdo da stack..."
+STK_MESSAGE_SUB_PROCESS_CALLED_PROCESS_ERROR: "O processo executado não funciona usando {args}."
+
+INFO_COPYING_YOUR_STACK_TO_TEMP_NO_CHANGES_WILL_BE_MADE_TO_YOUR_ORIGINAL_STACK: "Copiando sua stack para o temp, nenhuma modificação será realizada na sua stack original."
+
+STK_MESSAGE_CHECKBOX_UNSORTED_CREATE_APP_SELECT_APPLY_PLUGIN: "Selecione (na ordem) os plugins para serem aplicados:"
+STK_MESSAGE_NO_RELEASE: "Sem release"
+STK_MESSAGE_PLEASE_SELECT_AT_LEAST_ONE: "Por favor, selecione pelo menos um."

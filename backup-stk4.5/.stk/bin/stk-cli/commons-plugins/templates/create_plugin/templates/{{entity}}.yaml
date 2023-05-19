@@ -1,0 +1,45 @@
+name: {{plugin_name}}
+description: {{plugin_description}}
+{% if inputs.entity == 'plugin' %}
+display-name: {{plugin_name}}
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
+  - "Api"
+{% endif %}
+types:
+{% if inputs.entity == 'plugin' %}
+  - app
+{% else %}
+  - app-template
+{% endif %}
+inputs:
+{% if inputs.entity == 'plugin' %}
+  - label: Input Example
+    type: text
+    name: example
+    default: any text
+  - label: Example of number
+    type: int
+    name: any_number
+    default: "10"
+  - label: Example of list
+    type: multiselect
+    name: any_list
+    items:
+      - item1
+      - item2
+{% endif %}
+{%if inputs.entity == 'template'%}
+  - label: Project name
+    type: text
+    name: project_name
+    default: project-name
+{% endif %}
