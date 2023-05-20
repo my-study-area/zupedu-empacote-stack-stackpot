@@ -433,10 +433,29 @@ Nesta explicação olhamos para os plugins para perceber se eles de fato precisa
 Dado que um plugin que faz exatamente o que é necessário já existe, para que criar de novo? Vamos ver exatamente como podemos incoportar plugins existentes a stacks novas.
 - [Adicionando plugins existentens em uma nova stack](https://youtu.be/wBuiztB3yuY)
 
+### Atividades Preparatórias
+Passo a passo para extração de um plugin para um repositório remoto e posterior importação em uma nova stack.
+
+[Neste passo a passo vamos analisar no detalhe o processo de extração de um plugin para um repositório remoto e sua posterior importação numa nova stack.](https://youtu.be/kDcEbWEpN3Q)
+
+### Atividades Obrigatórias
+Descreva no detalhe o passo a passo desde a extração de um plugin para um repositório remoto até sua importação numa nova stack
+
+Diretamente na avaliação, descreva o passo a passo para que um plugin possa viver no repositório próprio e também para que possa ser adicionado num segundo momento a uma stack nova.
+
+[Resposta do Especialista]
+
+1. Move a pasta do plugin da stack outro local
+2. Inicia o repositório o git na pasta extraída do plugin
+3. Faz o commit inicial
+4. Cria o repositório remoto no serviço que estiver sendo utilizado.
+5. Adiciona a url do repositório remoto na configuração do git
+6. Faz o push do plugin para o repositório remoto
+7. Dentro da pasta da outra stack executa o comando stk add plugin enderecoRemoto
 
 ## Links
 - [Bloom’s Revised Taxonomy](https://www.coloradocollege.edu/other/assessment/how-to-assess-learning/learning-outcomes/blooms-revised-taxonomy.html)
 - [Template](https://docs.stackspot.com/docs/getting-started/glossary/#template)
 - [Plugin](https://docs.stackspot.com/docs/getting-started/glossary/#plugin)
-
 - [Templates com Jinja](https://jinja.palletsprojects.com/en/3.1.x/templates/)
+- [Stackspot legado](https://legacy.stackspot.com/pt)
