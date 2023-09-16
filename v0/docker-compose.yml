@@ -1,8 +1,0 @@
-version: "3.9"
-services:
-  stackspot-cli:
-    build: .
-    entrypoint: ["tail", "-f", "/dev/null"]
-    working_dir: /home/stk/workspace
-    volumes:
-      - ./:/home/stk/workspace
