@@ -1,0 +1,12 @@
+version: '3.0'
+services:
+  db:
+    image: postgres
+    restart: always
+    hostname: db
+    ports:
+      - "{{inputs.porta}}:5432"
+    environment:
+      - POSTGRES_USER={{inputs.usuario}}
+      - POSTGRES_PASSWORD={{inputs.senha}}
+      - POSTGRES_DB={{inputs.banco_dados}}
