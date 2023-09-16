@@ -1,0 +1,57 @@
+schema-version: v2
+kind: plugin
+metadata:
+  name: plugin-spring-data-postgres
+  display-name: plugin-spring-data-postgres
+  description: Plugin para configuração de spring data numa aplicação com spring boot
+  version: 0.0.1
+  picture: plugin.png
+spec:
+  type: app
+  compatibility:
+    - Java
+    - Spring boot
+  about: docs/about.md
+  implementation: docs/implementation.md
+  release-notes: docs/release-notes-0.0.1.md
+  requirements: docs/requirements.md
+  technologies: # Ref: https://docs.stackspot.com/content-creator/studio/yaml-files/plugin-yaml/#technologies
+    - Spring data
+  inputs:
+    - label: Usuario do banco de dados
+      type: text
+      name: usuario
+      default: usuario
+    - label: Senha do banco de dados
+      type: text
+      name: senha
+      default: "123@abc"
+    - label: Porta padrao do banco de dados
+      type: text
+      name: porta
+      default: 5433
+    - label: Nome do banco de dados
+      type: text
+      name: banco_dados
+      default: meu_banco_dados
+  hooks:
+    - type: edit
+      trigger: after-render
+      path: pom.xml
+      changes:
+        - search:
+            string: </dependencies>
+            insert-before:
+              snippet: snippets/dependencies.xml
+            when:
+              not-exists-snippet: snippets/dependencies.xml
+    - type: edit
+      trigger: after-render
+      path: "src/main/resources/application.properties"
+      changes:
+        - insert:
+            line: -1
+            snippet: snippets/conf.properties
+            when:
+              not-exists-snippet: snippets/conf.properties
+
