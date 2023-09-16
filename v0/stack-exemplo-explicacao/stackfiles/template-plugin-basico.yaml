@@ -1,7 +1,0 @@
-type: app
-description: template-plugin-basico
-template: stack-exemplo-explicacao/template-exemplo
-inputs:
-  some_input: value
-plugins:
-- plugin: stack-exemplo-explicacao/plugin-exemplo
