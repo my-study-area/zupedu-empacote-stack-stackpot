@@ -4,7 +4,7 @@ metadata:
   name: plugin-spring-data-postgres
   display-name: plugin-spring-data-postgres
   description: Plugin para configuração de spring data numa aplicação com spring boot
-  version: 0.0.1
+  version: 0.1.0
   picture: plugin.png
 spec:
   type: app
@@ -23,9 +23,9 @@ spec:
       name: usuario
       default: usuario
     - label: Senha do banco de dados
-      type: text
+      type: password
       name: senha
-      default: "123@abc"
+      required: true
     - label: Porta padrao do banco de dados
       type: text
       name: porta
@@ -33,7 +33,14 @@ spec:
     - label: Nome do banco de dados
       type: text
       name: banco_dados
-      default: meu_banco_dados
+      default: banco
+    - label: Adicionar docker-compose?
+      type: select
+      items:
+        - Sim
+        - Não
+      name: tem_docker_compose
+      default: Não
   hooks:
     - type: edit
       trigger: after-render
@@ -54,4 +61,12 @@ spec:
             snippet: snippets/conf.properties
             when:
               not-exists-snippet: snippets/conf.properties
+    - type: render-templates
+      trigger: after-render
+      path: templates-docker-compose
+      condition:
+        variable: tem_docker_compose
+        operator: "=="
+        value: Sim
+
 
